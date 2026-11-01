@@ -1658,3 +1658,80 @@ body > header:not(.header-transparent) + main .hero {
         font-size: 0.9rem !important;
     }
 }
+
+/* =========================================
+   ARREGLO PARA TABLET EN VERTICAL (Orientación Retrato)
+   ========================================= */
+
+/* Aplicamos esto a tablets y pantallas medianas (entre 769px y 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    
+    /* 1. Forzar que el menú de texto se vea siempre, incluso en vertical */
+    .nav {
+        display: flex !important;
+        position: static !important;
+        background: transparent !important;
+        width: auto !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .nav__list {
+        flex-direction: row !important;
+        gap: 1rem !important; /* Un poco menos de espacio para que quepa en vertical */
+    }
+
+    .nav__link {
+        color: #ffffff !important;
+        font-size: 0.9rem !important; /* Letra un pelín más pequeña para que quepa */
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+    }
+
+    /* 2. Ocultar el botón hamburguesa, ya que tenemos el menú visible */
+    #menu-btn {
+        display: none !important;
+    }
+
+    /* 3. Ajustar la cabecera para que todo quepa en una sola línea */
+    .header__container {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .logo {
+        font-size: 1.5rem !important;
+    }
+    
+    .header-logo-img {
+        height: 40px !important;
+    }
+
+    /* 4. Ajustar el botón de contacto de la cabecera */
+    .header .btn--primary {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* 5. El texto del Hero se queda alineado a la izquierda, como en escritorio */
+    .hero__title {
+        font-size: 3rem !important;
+        text-align: left !important;
+    }
+
+    .hero__text {
+        font-size: 1.1rem !important;
+        text-align: left !important;
+        max-width: 90% !important;
+    }
+
+    .hero__content {
+        align-items: flex-start !important;
+        margin: 0 !important;
+        padding: 0 2rem !important;
+    }
+
+    .hero__actions {
+        justify-content: flex-start !important;
+    }
+}
