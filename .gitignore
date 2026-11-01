@@ -1,0 +1,11 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Backups locales
+backups/
+*.tar.gz
+
+# Configuraciones de editores
+.vscode/
+.idea/
