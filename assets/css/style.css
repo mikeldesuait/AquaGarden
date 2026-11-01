@@ -1597,3 +1597,64 @@ body > header:not(.header-transparent) + main .hero {
         line-height: 1.6 !important;
     }
 }
+
+/* =========================================
+   DISEÑO ESPECÍFICO PARA TABLETS (768px - 1024px)
+   ========================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* 1. Mostramos el menú de escritorio en la tablet */
+    .nav {
+        display: flex !important;
+        position: static !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        width: auto !important;
+        padding: 0 !important;
+    }
+
+    .nav__list {
+        flex-direction: row !important;
+        gap: 1.5rem !important;
+    }
+
+    .nav__link {
+        color: #ffffff !important; /* Letras blancas sobre la foto */
+        font-size: 0.95rem !important;
+        border-bottom: none !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.6) !important;
+    }
+
+    /* Ocultamos el botón de las rayitas en la tablet */
+    #menu-btn {
+        display: none !important;
+    }
+
+    /* 2. Ajustamos el texto del Hero para que no se vea ni muy grande ni muy apretado */
+    .hero__title {
+        font-size: 3.5rem !important; /* Tamaño intermedio */
+        text-align: left !important;
+    }
+
+    .hero__text {
+        font-size: 1.2rem !important;
+        text-align: left !important;
+        max-width: 600px !important;
+    }
+
+    .hero__content {
+        align-items: flex-start !important;
+        margin: 0 !important;
+        padding-top: 120px !important;
+    }
+
+    .hero__actions {
+        justify-content: flex-start !important;
+    }
+
+    /* 3. Ajustar el botón de contacto de la cabecera */
+    .header .btn--primary {
+        padding: 0.6rem 1.5rem !important;
+        font-size: 0.9rem !important;
+    }
+}
