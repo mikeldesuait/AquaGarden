@@ -1,0 +1,1599 @@
+:root {
+  --primary: #84cc16;
+  --secondary: #38bdf8;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --bg-light: #f8fafc;
+  --font-heading: 'Poppins', sans-serif;
+  --font-base: 'Inter', sans-serif;
+  --shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bg-light); color: var(--text-main); font-family: var(--font-base); line-height: 1.7; }
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; color: var(--text-main); }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* HEADER BASE */
+header.header {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    padding: 1.2rem 0;
+    transition: all 0.3s ease;
+}
+.header__container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 2px; }
+.logo span { color: var(--secondary); }
+.header-logo-img { height: 46px; width: auto; margin-right: 0; margin-left: -5px; margin-top: -2px; }
+
+/* NAVEGACIÓN */
+.nav__list { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav__link { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); transition: color 0.3s; }
+.nav__link:hover, .nav__link.active { color: var(--primary); }
+
+/* BOTONES */
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; cursor: pointer; border: none; }
+.btn--primary { background: var(--primary); color: var(--text-main); }
+.btn--primary:hover { background: #65a30d; color: #ffffff; transform: translateY(-2px); }
+.btn--lg { padding: 1rem 2.5rem; font-size: 1.1rem; }
+
+/* HERO (PORTADA) */
+.hero {
+    height: 100vh; position: relative;
+    background: url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.5) 50%, rgba(15,23,42,0.1) 100%); }
+.hero__content { position: relative; z-index: 10; max-width: 800px; padding-top: 80px; }
+.hero__title { font-size: 4.5rem; font-weight: 700; line-height: 1.1; color: #ffffff; margin-bottom: 1.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.6); }
+.hero__text { font-size: 1.4rem; color: #e2e8f0; margin-bottom: 2.5rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
+
+/* =========================================
+   LÓGICA DE LA CABECERA EN EL INICIO (TRANSPARENTE -> BLANCA)
+   ========================================= */
+header.header-transparent { background: transparent; }
+header.header-transparent .logo, header.header-transparent .nav__link { color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+header.header-transparent .logo span { color: var(--primary); }
+header.header-transparent .btn--primary { background: transparent; border: 1px solid #ffffff; color: #ffffff; }
+
+/* Al hacer scroll en el Inicio */
+header.header-transparent.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+header.header-transparent.scrolled .logo, header.header-transparent.scrolled .nav__link { color: var(--text-main); text-shadow: 0 0 8px rgba(255,255,255,1), 0 0 15px rgba(255,255,255,0.8); }
+header.header-transparent.scrolled .logo span { color: var(--primary); }
+header.header-transparent.scrolled .btn--primary { background: var(--primary); border: none; color: var(--text-main); }
+
+/* =========================================
+   LÓGICA DE LA CABECERA EN PÁGINAS INTERNAS (BLANCA SÓLIDA)
+   ========================================= */
+body > header.header:not(.header-transparent) {
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border-bottom: 1px solid #e2e8f0;
+}
+body > header.header:not(.header-transparent) .logo,
+body > header.header:not(.header-transparent) .nav__link {
+    color: var(--text-main);
+    text-shadow: none;
+}
+body > header.header:not(.header-transparent) .logo span { color: var(--primary); }
+body > header.header:not(.header-transparent) .btn--primary { background: var(--primary); color: var(--text-main); }
+
+/* SECCIONES Y TARJETAS */
+.section { padding: 6rem 0; background-color: #f8fafc; }
+.section-header { margin-bottom: 3rem; text-align: center; }
+.section-title { font-size: 3.5rem; color: var(--text-main); }
+.section-subtitle { font-size: 1.25rem; color: var(--text-muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
+.card { background: #ffffff; padding: 3.5rem 2.5rem; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: var(--shadow); transition: all 0.3s ease; position: relative; }
+.card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 15px 30px -5px rgba(132, 204, 22, 0.2); }
+.card__num { font-size: 4rem; font-weight: 800; color: rgba(132, 204, 22, 0.15); position: absolute; top: 1.5rem; right: 2rem; }
+.card__title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; position: relative; z-index: 1; }
+.card__desc { font-size: 1.05rem; color: var(--text-muted); position: relative; z-index: 1; }
+.card__content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+.card__content.is-open { max-height: 500px; }
+
+/* FOOTER */
+.footer { background: var(--text-main); padding: 4rem 0 2rem; margin-top: 4rem; }
+.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer h3 { font-size: 1.1rem; margin-bottom: 1.5rem; color: #ffffff; }
+.footer p, .footer a, .footer ul { color: #94a3b8; font-size: 0.95rem; }
+.footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer__bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-size: 0.85rem; }
+
+/* SELECTOR DE IDIOMA */
+.lang-select { background: transparent; border: 1px solid rgba(0,0,0,0.2); color: var(--text-main); padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-weight: 600; outline: none; }
+header.header-transparent .lang-select { color: #ffffff; border-color: rgba(255,255,255,0.5); }
+
+/* Arreglar el hueco superior en páginas internas */
+main[style*="padding-top"] {
+    padding-top: 140px !important;
+}
+
+/* RESPONSIVE BÁSICO */
+@media (max-width: 900px) {
+    .mobile-menu-btn { display: block; background: none; border: none; font-size: 2rem; color: inherit; cursor: pointer; }
+    .nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; padding: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .nav.open { display: block; }
+    .nav__list { flex-direction: column; gap: 1.5rem; }
+    .nav__link { color: var(--text-main) !important; }
+    .hero__title { font-size: 2.5rem; }
+    .hero__text { font-size: 1.1rem; }
+    .header__container { flex-wrap: wrap; }
+    .mobile-menu-btn { margin-left: auto; }
+}
+
+/* =========================================
+   HACER LAS LETRAS Y EL LOGO MÁS GRANDES
+   ========================================= */
+
+/* 1. Aumentar el tamaño del texto del logo */
+.logo {
+    font-size: 1.9rem !important; /* Antes 1.5rem */
+}
+
+/* 2. Aumentar el tamaño de la gota */
+.header-logo-img {
+    height: 55px !important; /* Antes 46px */
+}
+
+/* 3. Aumentar el tamaño de los enlaces del menú */
+.nav__link {
+    font-size: 1.15rem !important; /* Antes 0.95rem */
+    font-weight: 600 !important; /* Un poco más gruesos para que resalten */
+}
+
+/* 4. Separar un poco más los elementos del menú para que no se vean apelotonados */
+.nav__list {
+    gap: 3rem !important;
+}
+
+/* 5. Ajustar el botón de contacto de la cabecera para que acompañe */
+.header .btn--primary {
+    font-size: 1.05rem !important;
+    padding: 0.8rem 2.2rem !important;
+}
+
+/* 6. Ajustar el selector de idioma para que no se quede pequeño */
+.lang-select {
+    font-size: 1rem !important;
+    padding: 0.5rem 1.2rem !important;
+}
+
+/* 7. En móviles, controlamos que no se desborde */
+@media (max-width: 900px) {
+    .logo { font-size: 1.6rem !important; }
+    .header-logo-img { height: 45px !important; }
+    .nav__link { font-size: 1.2rem !important; } /* En móvil el menú desplegable se ve más grande */
+}
+
+/* =========================================
+   MÁS LUMINOSIDAD Y SOMBRAS EN LA CABECERA
+   ========================================= */
+
+/* 1. Aclarar la foto del Hero (menos opacidad en el degradado) */
+.hero::before {
+    background: linear-gradient(to right, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.15) 50%, rgba(15,23,42,0) 100%) !important;
+}
+
+/* 2. Sombreado fuerte para las letras de la cabecera (Inicio) */
+header.header-transparent .logo,
+header.header-transparent .nav__link {
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8), 
+        0 4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 3. Sombreado para el título y subtítulo del Hero */
+.hero__title {
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7), 0 2px 5px rgba(0, 0, 0, 0.9) !important;
+}
+.hero__text {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 1) !important;
+}
+
+/* =========================================
+   RESPLANDOR OSCURO PARA LAS LETRAS (SIN APAGAR LA FOTO)
+   ========================================= */
+
+/* 1. Resplandor para la cabecera (Inicio) */
+header.header-transparent .logo,
+header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.9), 
+        0 4px 12px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(0, 0, 0, 0.6) !important; /* Halo oscuro extra */
+}
+
+/* 2. Resplandor para el Título principal (Hero) */
+.hero__title {
+    color: #ffffff !important;
+    text-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.9), 
+        0 8px 25px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(0, 0, 0, 0.5) !important; /* Halo oscuro fuerte */
+}
+
+/* 3. Resplandor para el subtítulo (Hero) */
+.hero__text {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    text-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.9), 
+        0 4px 15px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 4. La & en verde también necesita resplandor */
+header.header-transparent .logo span {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* =========================================
+   TEXTO OSCURO CON HALO BLANCO (MÁXIMA LEGIBILIDAD Y LUMINOSIDAD)
+   ========================================= */
+
+/* 1. Letras de la cabecera (Inicio) */
+header.header-transparent .logo,
+header.header-transparent .nav__link {
+    color: #0f172a !important; /* Azul noche oscuro */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 1), 
+        0 0 20px rgba(255, 255, 255, 0.9),
+        0 2px 5px rgba(255, 255, 255, 0.8) !important; /* Resplandor blanco */
+    font-weight: 600 !important;
+}
+
+/* 2. La & en verde con resplandor blanco */
+header.header-transparent .logo span {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1) !important;
+}
+
+/* 3. Título principal del Hero */
+.hero__title {
+    color: #0f172a !important; /* Azul noche oscuro */
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 1), 
+        0 0 30px rgba(255, 255, 255, 0.9),
+        0 4px 10px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 4. Subtítulo del Hero */
+.hero__text {
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 1), 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 2px 5px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* =========================================
+   DISEÑO PROFESIONAL: TEXTO A LA IZQUIERDA Y DEGRADADO ELEGANTE
+   ========================================= */
+
+/* 1. Volver a poner el texto BLANCO (pero sin sombras de parche) */
+.hero__title,
+.hero__text {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important; /* Sombra sutil y elegante */
+}
+
+/* 2. Alinear el contenido a la izquierda (estilo revista) */
+.hero__content {
+    text-align: left !important;
+    margin: 0 !important; /* Quitamos el centrado */
+    align-items: flex-start !important; /* Alinea a la izquierda */
+    max-width: 800px !important;
+}
+
+/* 3. El truco de profesional: Degradado oscuro de izquierda a derecha */
+.hero::before {
+    background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 45%, rgba(15, 23, 42, 0) 100%) !important;
+}
+
+/* 4. Ajustar la cabecera para que sus letras blancas no tengan sombras de parche */
+header.header-transparent .logo,
+header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important; /* Sombra sutil */
+}
+
+/* 5. Ajustar el botón para que no esté centrado */
+.hero__actions {
+    justify-content: flex-start !important;
+}
+
+/* =========================================
+   ESTILO EDITORIAL LIMPIO (TEXTO BLANCO Y SOMBRA DISCRETA)
+   ========================================= */
+
+/* 1. El texto del Hero (Título y Párrafo) en blanco con sombra negra discreta */
+.hero__title,
+.hero__text {
+    color: #ffffff !important;
+    /* Sombra sutil: un poco de desenfoque y un pelín de desplazamiento hacia abajo */
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6) !important; 
+}
+
+/* 2. El fondo de la izquierda: un degradado suave, sin que sea un bloque negro */
+.hero::before {
+    background: linear-gradient(to right, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.3) 50%, rgba(15, 23, 42, 0) 100%) !important;
+}
+
+/* 3. La cabecera (Inicio): texto blanco con la misma sombra discreta */
+header.header-transparent .logo,
+header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 4. La & en verde */
+header.header-transparent .logo span {
+    color: var(--primary) !important;
+    text-shadow: none !important;
+}
+
+/* =========================================
+   SOMBRA NEGRA FUERTE PARA EL SUBTÍTULO (HERO TEXT)
+   ========================================= */
+
+.hero__text {
+    color: #ffffff !important;
+    /* Sombra negra sólida y difuminada para máximo contraste */
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 1), 
+        0 4px 10px rgba(0, 0, 0, 0.9),
+        0 0 15px rgba(0, 0, 0, 0.7) !important; 
+    font-weight: 500 !important;
+}
+
+/* =========================================
+   SOMBRA MUY FUERTE PARA EL SUBTÍTULO (HERO TEXT)
+   ========================================= */
+
+.hero__text {
+    color: #ffffff !important;
+    /* Sombra multicapa: una sólida muy pegada para definir el borde, y otra más difuminada para dar profundidad */
+    text-shadow: 
+        0 1px 2px rgba(0, 0, 0, 1), 
+        0 3px 6px rgba(0, 0, 0, 1),
+        0 6px 15px rgba(0, 0, 0, 0.9),
+        0 0 25px rgba(0, 0, 0, 0.8) !important; 
+    font-weight: 600 !important; /* Un poco más de grosor ayuda a que la sombra se integre mejor */
+    letter-spacing: 0.5px !important; /* Un pelín de separación entre letras para que se lea mejor */
+}
+
+/* =========================================
+   EFECTO 3D PARA EL SUBTÍTULO (HERO TEXT)
+   ========================================= */
+
+.hero__text {
+    color: #ffffff !important;
+    /* Sombra dura pegada (efecto relieve) + Sombra proyectada (efecto 3D) */
+    text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 1),    /* Sombra dura derecha-abajo */
+        2px 2px 0px rgba(0, 0, 0, 1),    /* Sombra dura 2 */
+        3px 3px 0px rgba(0, 0, 0, 1),    /* Sombra dura 3 */
+        5px 5px 10px rgba(0, 0, 0, 0.8), /* Proyección difuminada */
+        0 0 20px rgba(0, 0, 0, 0.5) !important; /* Halo general oscuro */
+    font-weight: 600 !important;
+}
+
+/* =========================================
+   EFECTO 3D PARA EL TÍTULO Y LA CABECERA
+   ========================================= */
+
+/* 1. Título principal (Hero Title) */
+.hero__title {
+    color: #ffffff !important;
+    text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 1),
+        2px 2px 0px rgba(0, 0, 0, 1),
+        4px 4px 0px rgba(0, 0, 0, 1),
+        6px 6px 15px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(0, 0, 0, 0.5) !important;
+    font-weight: 700 !important;
+}
+
+/* 2. Letras de la cabecera (Logo y Menú) */
+header.header-transparent .logo,
+header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 1),
+        2px 2px 0px rgba(0, 0, 0, 1),
+        4px 4px 8px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 3. La & verde mantiene su color pero con sombra para resaltar */
+header.header-transparent .logo span {
+    color: var(--primary) !important;
+    text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 1),
+        2px 2px 0px rgba(0, 0, 0, 1) !important;
+}
+
+/* =========================================
+   ARREGLO DE CABECERA PARA PÁGINAS INTERNAS
+   ========================================= */
+
+/* 1. En las páginas internas, la cabecera es blanca sólida y sin efecto 3D */
+body > header.header:not(.header-transparent) {
+    background: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body > header.header:not(.header-transparent) .logo,
+body > header.header:not(.header-transparent) .nav__link {
+    color: #0f172a !important; /* Azul noche */
+    text-shadow: none !important; /* QUITAMOS el efecto 3D aquí */
+}
+
+body > header.header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 2. En el Inicio, la cabecera flota y las letras tienen el efecto 3D */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 1),
+        2px 2px 0px rgba(0, 0, 0, 1),
+        4px 4px 8px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+    text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 1),
+        2px 2px 0px rgba(0, 0, 0, 1) !important;
+}
+
+/* 3. Ocultar la foto de fondo que se estaba colando en la página de Servicios */
+body > header:not(.header-transparent) + main .hero {
+    display: none !important; /* Elimina cualquier rastro de la foto en páginas internas */
+}
+
+/* =========================================
+   TARJETAS ESTILO BOTÓN 3D (RELIEVE VERDE)
+   ========================================= */
+
+.card {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important; /* Borde gris suave por defecto */
+    border-radius: 16px !important;
+    padding: 3.5rem 2.5rem !important;
+    transition: all 0.2s ease-out !important; /* Transición rápida para el efecto de presión */
+    
+    /* LA MAGIA DEL 3D: Sombra sólida verde (simula el grosor) + Sombra difuminada (profundidad) */
+    box-shadow: 
+        4px 4px 0px 0px var(--primary),       /* Canto verde sólido */
+        8px 8px 15px 0px rgba(0,0,0,0.1) !important; /* Sombra flotante */
+}
+
+/* Efecto al pasar el ratón (Hover) */
+.card:hover {
+    transform: translate(-2px, -2px) !important; /* El botón se levanta un poco más */
+    border-color: var(--primary) !important; /* El borde entero se vuelve verde */
+    
+    /* Aumentamos el grosor del canto verde y la sombra para exagerar el efecto */
+    box-shadow: 
+        6px 6px 0px 0px var(--primary),       
+        12px 12px 25px 0px rgba(0,0,0,0.15) !important; 
+}
+
+/* Efecto al hacer clic (Active) - Como si se presionara el botón */
+.card:active {
+    transform: translate(2px, 2px) !important; /* Baja al presionar */
+    box-shadow: 
+        1px 1px 0px 0px var(--primary), 
+        2px 2px 5px 0px rgba(0,0,0,0.1) !important; 
+}
+
+/* Arreglamos el número gigante para que no se salga del nuevo diseño */
+.card__num {
+    font-size: 4rem !important;
+    font-weight: 800 !important;
+    color: rgba(132, 204, 22, 0.15) !important;
+    position: absolute !important;
+    top: 1.5rem !important;
+    right: 2rem !important;
+    line-height: 1 !important;
+    transition: all 0.3s ease !important;
+    z-index: 0 !important;
+    pointer-events: none;
+}
+
+.card:hover .card__num {
+    color: rgba(132, 204, 22, 0.3) !important;
+    transform: scale(1.1) !important;
+}
+
+/* El título y la descripción deben estar por encima del número */
+.card__title, .card__desc {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* =========================================
+   FOOTER MINIMALISTA Y ELEGANTE
+   ========================================= */
+
+.footer {
+    background: #0f172a !important; /* Azul noche profundo */
+    padding: 3rem 0 1.5rem !important; /* Menos altura total */
+    margin-top: 4rem;
+}
+
+.footer__grid {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem !important;
+}
+
+/* Columna Izquierda: Logo y lema corto */
+.footer__brand {
+    max-width: 300px;
+}
+.footer__brand .logo {
+    font-size: 1.5rem !important;
+    color: #ffffff !important;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+.footer__brand p {
+    font-size: 0.85rem !important;
+    color: #94a3b8 !important;
+    line-height: 1.5 !important;
+}
+
+/* Columnas Derechas: Enlaces directos sin cabeceras gigantes */
+.footer__links, .footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.footer__links h3, .footer__contact h3 {
+    display: none !important; /* Ocultamos los títulos "Navegación" y "Contacto" para ser más limpios */
+}
+.footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+}
+.footer a, .footer p {
+    font-size: 0.9rem !important;
+    color: #cbd5e1 !important;
+    transition: color 0.3s;
+    margin: 0;
+}
+.footer a:hover {
+    color: var(--primary) !important;
+}
+
+/* Línea inferior (Copyright y Legales juntos) */
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 1.5rem !important;
+    border-top: 1px solid rgba(255,255,255,0.1) !important;
+    font-size: 0.8rem !important;
+    color: #64748b !important;
+}
+
+/* Contenedor para los enlaces legales en la misma línea */
+.legal-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+.legal-links a {
+    color: #64748b !important;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.legal-links a:hover {
+    color: #ffffff !important;
+}
+.legal-links span {
+    color: #334155; /* Color del puntito separador */
+}
+
+@media (max-width: 768px) {
+    .footer__grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .footer__bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .legal-links {
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   FOOTER MINIMALISTA HORIZONTAL
+   ========================================= */
+
+.footer {
+    background: #0f172a !important;
+    padding: 2rem 0 1rem !important;
+    margin-top: 4rem;
+    font-family: var(--font-base);
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Fila superior: Logo a la izquierda, Navegación a la derecha */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 1.5rem;
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+}
+.footer-logo span {
+    color: var(--primary);
+}
+
+.footer-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #ffffff;
+}
+
+/* Fila inferior: Contacto a la izquierda, Legales a la derecha */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.footer-contact, .footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.footer-bottom a {
+    color: #64748b;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: #ffffff;
+}
+
+/* Los puntitos separadores */
+.footer-bottom span {
+    color: #334155;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .footer-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   FOOTER HORIZONTAL CON LA GOTA
+   ========================================= */
+
+.footer {
+    background: #0f172a !important;
+    padding: 4rem 0 2rem !important;
+    margin-top: 4rem;
+    font-family: var(--font-base);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* La primera columna es más ancha para el logo */
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Estilos de la columna del Logo */
+.brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-logo span {
+    color: var(--primary);
+}
+
+.footer-gota {
+    height: 40px;
+    width: auto;
+    margin-left: -5px;
+}
+
+.footer-tagline {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+/* Estilos de las columnas de enlaces */
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-col a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--primary);
+}
+
+/* Línea inferior de Copyright */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .footer-tagline {
+        max-width: 100%;
+    }
+}
+
+/* =========================================
+   FOOTER ULTRA-COMPACTO (SOLO 2 LÍNEAS)
+   ========================================= */
+
+.footer {
+    background: #0f172a !important;
+    padding: 1.5rem 0 !important; /* Poco espacio arriba y abajo */
+    margin-top: 4rem;
+    font-family: var(--font-base);
+    font-size: 0.85rem;
+}
+
+.footer-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espacio entre la línea 1 y la línea 2 */
+}
+
+/* Fila 1 */
+.footer-row-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05); /* Separador sutil */
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-logo span {
+    color: var(--primary);
+}
+
+.footer-gota {
+    height: 28px; /* Gota más pequeña para que no ocupe mucho */
+    width: auto;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #ffffff;
+}
+
+/* Fila 2 */
+.footer-row-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #64748b;
+}
+
+.footer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.footer-info a {
+    color: #64748b;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-info a:hover {
+    color: #ffffff;
+}
+
+.footer-info span {
+    color: #334155; /* Puntito separador */
+}
+
+/* Responsive para pantallas muy pequeñas */
+@media (max-width: 900px) {
+    .footer-row-1, .footer-row-2 {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .footer-nav, .footer-info {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   FOOTER TOTALMENTE HORIZONTAL (3 LÍNEAS)
+   ========================================= */
+
+.footer-horizontal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+/* Fila 1: Logo a la izquierda, Menú a la derecha */
+.footer-h-row-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 1rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+}
+.footer-logo span { color: var(--primary); }
+.footer-gota { height: 30px; width: auto; }
+
+.footer-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+.footer-nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+.footer-nav a:hover { color: #ffffff; }
+
+/* Fila 2: Contacto y Legales en horizontal */
+.footer-h-row-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap; /* Para que en móviles salte de línea si no cabe */
+}
+.footer-h-row-2 a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+.footer-h-row-2 a:hover { color: #ffffff; }
+.dot { color: #334155; }
+
+/* Fila 3: Copyright */
+.footer-h-row-3 {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .footer-h-row-1 {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   DISEÑO RESPONSIVE (MÓVILES Y TABLETS)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* --- 1. CABECERA Y MENÚ HAMBURGUESA --- */
+    .header {
+        padding: 1rem 0 !important;
+    }
+    
+    /* Ocultamos el menú normal en móviles */
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        flex-direction: column;
+        align-items: center;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    /* Cuando el JS le añade la clase .open, se muestra */
+    .nav.open {
+        display: flex !important;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Mostramos el botón de las rayitas */
+    .mobile-menu-btn {
+        display: block !important;
+        font-size: 2rem;
+        color: var(--text-main); /* Color oscuro para que se vea */
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Si estamos en la portada (cabecera transparente), el botón es blanco */
+    header.header-transparent .mobile-menu-btn {
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* --- 2. HERO (PORTADA) --- */
+    .hero {
+        height: auto !important;
+        min-height: 100vh;
+        padding-top: 120px !important;
+        padding-bottom: 80px !important;
+        text-align: center;
+    }
+
+    .hero__content {
+        text-align: center !important;
+        margin: 0 auto !important;
+        padding: 0 1rem;
+        align-items: center !important;
+    }
+
+    .hero__title {
+        font-size: 2.8rem !important; /* Letra más pequeña para que quepa */
+        text-shadow: 0 2px 5px rgba(0,0,0,0.8) !important;
+    }
+
+    .hero__text {
+        font-size: 1.1rem !important;
+        padding: 0 1rem !important;
+    }
+
+    .hero__actions {
+        justify-content: center !important;
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* --- 3. TARJETAS DE SERVICIOS --- */
+    .grid {
+        grid-template-columns: 1fr !important; /* Una tarjeta por fila */
+        gap: 2rem !important;
+    }
+
+    .card {
+        padding: 2rem 1.5rem !important;
+    }
+
+    .section-title {
+        font-size: 2.2rem !important;
+    }
+
+    /* --- 4. PÁGINA DE CONTACTO --- */
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .contact-form-wrapper {
+        padding: 2rem 1.5rem !important;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr !important; /* Nombre y Teléfono uno debajo de otro */
+        gap: 0 !important;
+    }
+
+    /* --- 5. FOOTER --- */
+    .footer-h-row-1 {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        text-align: center;
+    }
+
+    .footer-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem !important;
+    }
+
+    .footer-h-row-2 {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    /* Ocultamos los puntitos separadores en el móvil para que quede más limpio */
+    .footer-h-row-2 .dot {
+        display: none;
+    }
+}
+
+/* =========================================
+   ARREGLO DEL BOTÓN DE MENÚ MÓVIL
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Hacemos que el contenedor de la cabecera se comporte bien en móvil */
+    .header__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap; /* Evita que el botón baje a otra línea */
+    }
+
+    /* 2. Estilo del botón de las tres rayitas */
+    #menu-btn {
+        display: block !important;
+        background: transparent !important;
+        border: none !important;
+        font-size: 2rem !important;
+        color: #ffffff !important; /* Blanco para que resalte sobre la foto */
+        cursor: pointer;
+        z-index: 1001; /* Asegura que esté por encima del menú */
+        padding: 0.5rem;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* Sombra para que se lea sobre el cielo */
+    }
+
+    /* 3. Cuando el menú está abierto, el botón cambia a una X */
+    #menu-btn.open {
+        color: var(--text-main) !important; /* Oscuro cuando el menú blanco está abierto */
+        text-shadow: none;
+    }
+
+    /* 4. El menú desplegable blanco */
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        display: none; /* Oculto por defecto */
+        flex-direction: column;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .nav.open {
+        display: flex !important;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav__link {
+        color: var(--text-main) !important; /* Texto oscuro en el menú blanco */
+        font-size: 1.2rem !important;
+    }
+}
+
+/* =========================================
+   OCULTAR EL BOTÓN MÓVIL EN ESCRITORIO Y MOSTRARLO EN MÓVIL
+   ========================================= */
+
+/* 1. En ordenadores (pantallas grandes), el botón está TOTALMENTE OCULTO */
+.mobile-menu-btn, #menu-btn {
+    display: none !important;
+}
+
+/* 2. En móviles (pantallas menores a 768px), el botón aparece */
+@media (max-width: 768px) {
+    .mobile-menu-btn, #menu-btn {
+        display: block !important;
+        background: transparent !important;
+        border: none !important;
+        font-size: 2rem !important;
+        color: #ffffff !important; /* Blanco sobre la foto */
+        cursor: pointer;
+        z-index: 1001;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    }
+
+    /* Ocultamos el menú de escritorio en móvil (hasta que se pulse el botón) */
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff !important;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav.open {
+        display: flex !important;
+    }
+
+    /* En el menú desplegable móvil, las letras son oscuras */
+    .nav__link {
+        color: var(--text-main) !important;
+        font-size: 1.2rem !important;
+    }
+}
+
+/* =========================================
+   REDISEÑO DEL MENÚ MÓVIL (COMPACTO Y ELEGANTE)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. El contenedor del menú (ocupa todo el ancho pero es compacto) */
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+        padding: 1.5rem 2rem !important;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 3px solid var(--primary);
+    }
+
+    .nav.open {
+        display: flex !important;
+    }
+
+    /* 2. Los enlaces del menú (sin sombras, oscuros y separados) */
+    .nav__list {
+        flex-direction: column;
+        gap: 1.2rem !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav__link {
+        color: #0f172a !important; /* Azul noche */
+        text-shadow: none !important; /* Quitamos la sombra que los hacía ilegibles */
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        display: block;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f1f5f9;
+        transition: color 0.3s;
+    }
+
+    .nav__link:hover, .nav__link.active {
+        color: var(--primary) !important;
+    }
+
+    /* 3. El botón de contacto dentro del menú */
+    .nav .btn--primary {
+        width: 100%;
+        margin-top: 0.5rem;
+        padding: 0.8rem !important;
+        font-size: 1rem !important;
+    }
+
+    /* 4. El botón de las rayitas (X) para cerrar */
+    #menu-btn {
+        display: block !important;
+        color: #ffffff !important;
+        font-size: 2rem !important;
+        z-index: 1005 !important;
+    }
+
+    /* 5. Arreglar el select de idioma para que no flote solo */
+    .nav__list li:last-child {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .lang-select {
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+        background: #f8fafc !important;
+    }
+}
+
+/* =========================================
+   MENÚ MÓVIL TIPO CRISTAL (TRANSLÚCIDO Y DIFUMINADO)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. El fondo del menú: Cristal difuminado */
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        /* Fondo oscuro semitransparente para que resalten las letras blancas */
+        background: rgba(15, 23, 42, 0.85) !important; 
+        backdrop-filter: blur(12px) !important; /* Efecto difuminado de cristal */
+        -webkit-backdrop-filter: blur(12px) !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+        padding: 1.5rem 2rem !important;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 2px solid var(--primary);
+    }
+
+    .nav.open {
+        display: flex !important;
+    }
+
+    /* 2. Los enlaces del menú en blanco para que resalten sobre el cristal oscuro */
+    .nav__list {
+        flex-direction: column;
+        gap: 1.2rem !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav__link {
+        color: #ffffff !important; /* Letras blancas */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important; /* Sombra para legibilidad */
+        font-size: 1.15rem !important;
+        font-weight: 600 !important;
+        display: block;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
+        transition: color 0.3s;
+    }
+
+    .nav__link:hover, .nav__link.active {
+        color: var(--primary) !important; /* Verde al pasar el ratón */
+    }
+
+    /* 3. El botón de contacto dentro del menú */
+    .nav .btn--primary {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.8rem !important;
+        font-size: 1rem !important;
+        box-shadow: 0 4px 15px rgba(132, 204, 22, 0.3) !important;
+    }
+
+    /* 4. Arreglar el select de idioma para que encaje en el cristal */
+    .nav__list li:last-child {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-bottom: none;
+    }
+
+    .lang-select {
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+    }
+}
+
+/* =========================================
+   REDISEÑO DE SERVICIOS PARA MÓVIL (COMPACTO Y ELEGANTE)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Ajustar el contenedor principal para que no haya tanto hueco arriba */
+    .section {
+        padding-top: 2rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* 2. El título más pequeño y pegado al texto */
+    .section-title {
+        font-size: 2rem !important;
+        margin-bottom: 0.5rem !important;
+        text-align: center;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem !important;
+        margin-bottom: 2rem !important;
+        padding: 0 1rem;
+    }
+
+    /* 3. El Grid: que no haya espacio entre tarjetas */
+    .grid {
+        display: flex !important;
+        flex-direction: column;
+        gap: 1.2rem !important;
+        padding: 0 1rem;
+    }
+
+    /* 4. Tarjetas: más compactas y elegantes */
+    .card {
+        padding: 1.5rem 1.2rem !important; /* Menos relleno */
+        border-radius: 12px !important;
+        position: relative;
+        min-height: auto !important; /* Quitamos la altura mínima forzada */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+        border: 1px solid #e2e8f0 !important;
+        border-left: 4px solid var(--primary) !important; /* Una línea verde a la izquierda para darle un toque moderno */
+    }
+
+    /* 5. El número: que no ocupe media pantalla */
+    .card__num {
+        font-size: 3rem !important;
+        position: absolute;
+        top: 1rem;
+        right: 1.2rem;
+        opacity: 0.15;
+        margin: 0 !important;
+    }
+
+    /* 6. Título de la tarjeta más ajustado */
+    .card__title {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem !important;
+        padding-right: 2.5rem; /* Para que el texto no se choque con el número */
+    }
+
+    /* 7. Texto de la tarjeta más pequeño */
+    .card__desc {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* 8. Arreglar el hueco del título en páginas internas (como esta) */
+    main[style*="padding-top"] {
+        padding-top: 100px !important;
+    }
+}
+
+/* =========================================
+   TARJETAS DE SERVICIOS CENTRADAS (MÓVIL Y ESCRITORIO)
+   ========================================= */
+
+/* 1. Centrar todo el contenido dentro de la tarjeta */
+.card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* Centra horizontalmente */
+    text-align: center !important;   /* Centra el texto */
+    padding: 2.5rem 1.5rem !important;
+    position: relative !important;
+}
+
+/* 2. El título y la descripción ocupan todo el ancho y se centran */
+.card__title {
+    font-size: 1.4rem !important;
+    margin-bottom: 0.75rem !important;
+    padding: 0 !important; /* Quitamos el hueco que le dimos para el número */
+    width: 100%;
+}
+
+.card__desc {
+    font-size: 0.95rem !important;
+    max-width: 90%; /* Para que no se pegue a los bordes */
+    margin: 0 auto !important;
+}
+
+/* 3. El número: Lo hacemos más pequeño, lo ponemos arriba y centrado */
+.card__num {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: var(--primary) !important;
+    opacity: 0.3 !important;
+    position: static !important; /* Quitamos el posicionamiento absoluto */
+    margin-bottom: 1rem !important;
+    line-height: 1 !important;
+    background: rgba(132, 204, 22, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+}
+
+/* 4. Quitamos la línea verde lateral en móvil y dejamos solo el borde superior */
+@media (max-width: 768px) {
+    .card {
+        border-left: 1px solid #e2e8f0 !important; /* Quitamos el borde verde grueso */
+        border-top: 4px solid var(--primary) !important; /* El borde verde va arriba */
+    }
+}
+
+/* =========================================
+   DAR VIDA A LAS TARJETAS EN MÓVIL (EFECTO 3D)
+   ========================================= */
+
+@media (max-width: 768px) {
+    .card {
+        /* Efecto de relieve: Sombra sólida verde a la derecha y abajo + Sombra difuminada */
+        box-shadow: 
+            4px 4px 0px 0px var(--primary),
+            6px 6px 15px 0px rgba(0,0,0,0.1) !important;
+        
+        border: 1px solid #e2e8f0 !important; /* Borde gris sutil */
+        border-top: none !important; /* Quitamos la línea verde de arriba */
+        border-radius: 12px !important;
+        padding: 2.5rem 1.5rem 2rem 1.5rem !important; /* Más espacio arriba */
+        
+        /* Mantenemos el texto centrado */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        background: #ffffff !important;
+    }
+
+    /* El número ahora es más grande y llamativo */
+    .card__num {
+        font-size: 2.5rem !important;
+        opacity: 0.2 !important;
+        margin-bottom: 1.5rem !important;
+        background: rgba(132, 204, 22, 0.15) !important;
+        padding: 0.5rem 1.5rem !important;
+        border-radius: 50px !important;
+    }
+
+    /* El título con más presencia */
+    .card__title {
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        color: var(--text-main) !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    /* La descripción un poco más grande para que se lea bien */
+    .card__desc {
+        font-size: 1rem !important;
+        color: var(--text-muted) !important;
+        line-height: 1.6 !important;
+    }
+}

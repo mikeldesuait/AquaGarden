@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Fondo blanco para que resalte en la pestaña -->
+  <rect width="100" height="100" rx="15" fill="#ffffff"/>
+  
+  <!-- Hoja verde (más ancha) -->
+  <path d="M50 5 C20 35 10 60 10 75 A40 40 0 0 0 90 75 C90 60 80 35 50 5 Z" fill="#84cc16" />
+  
+  <!-- Gota azul (más ancha) -->
+  <path d="M50 15 C30 45 20 60 20 75 A30 30 0 0 0 80 75 C80 60 70 45 50 15 Z" fill="#38bdf8" />
+</svg>

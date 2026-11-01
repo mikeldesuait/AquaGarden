@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aqua & Garden | Excelencia en Piscinas y Jardines</title>
+  <link rel="icon" type="image/png" href="assets/img/faviconpestana.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+  <header class="header header-transparent" id="main-header">
+    <div class="container header__container">
+      <a href="index.html" class="logo">
+        <img src="assets/img/gota.png" alt="Gota" class="header-logo-img">aqua<span>&</span>garden
+      </a>
+      <button class="mobile-menu-btn" id="menu-btn">☰</button>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link active" data-i18n="nav_home">Inicio</a></li>
+          <li><a href="pages/servicios.html" class="nav__link" data-i18n="nav_services">Servicios</a></li>
+          <li><a href="pages/nosotros.html" class="nav__link" data-i18n="nav_about">Nosotros</a></li>
+          <li><a href="pages/contacto.html" class="btn btn--primary" data-i18n="nav_contact">Contacto</a></li>
+          <li>
+            <select id="lang-select" class="lang-select">
+              <option value="es">🇪🇸 ES</option><option value="en">🇬🇧 EN</option><option value="de">🇩🇪 DE</option><option value="fr">🇫🇷 FR</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__content">
+        <h1 class="hero__title" data-i18n="hero_title">Tu piscina y jardín, impecables sin mover un dedo</h1>
+        <p class="hero__text" data-i18n="hero_text">Mantenimiento profesional para comunidades y particulares en la Costa Blanca. Disfruta de tu tiempo libre, nosotros nos encargamos del resto.</p>
+        <div class="hero__actions">
+          <a href="pages/contacto.html" class="btn btn--primary btn--lg" data-i18n="hero_btn">Solicitar Presupuesto</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="services_title">Nuestros Servicios</h2>
+        <p class="section-subtitle" data-i18n="services_subtitle">Haz clic en cada servicio para ver los detalles.</p>
+      </div>
+      <div class="grid" id="services-container"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="logo" style="color: white;">aqua<span>&</span>garden</a>
+        <p style="margin-top: 1.5rem; max-width: 300px;" data-i18n="footer_about">Conservación y mantenimiento de instalaciones acuáticas y zonas verdes con las mayores garantías.</p>
+      </div>
+      <div class="footer__links">
+        <h3 data-i18n="nav_home">Inicio</h3>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+          <li><a href="pages/servicios.html" data-i18n="nav_services">Servicios</a></li>
+          <li><a href="pages/contacto.html" data-i18n="nav_contact">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h3>Contacto</h3>
+        <ul><li>(+34) 622 411 992</li><li>aquagardenpools@gmail.com</li></ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> aqua&garden. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE SCROLL -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const header = document.querySelector(".header");
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  </script>
+<script src="assets/js/mobile-menu.js"></script>
+</body>
+</html>
+<!-- (Este es un parche rápido para inyectar los enlaces legales en el footer existente) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const footerLinks = document.querySelector('.footer__links ul');
+        if (footerLinks) {
+            const legalLi = document.createElement('li');
+            legalLi.style.marginTop = "1.5rem";
+            legalLi.innerHTML = '<a href="pages/aviso-legal.html" style="color: #94a3b8; font-size: 0.85rem;">Aviso Legal</a>';
+            
+            const privLi = document.createElement('li');
+            privLi.innerHTML = '<a href="pages/privacidad.html" style="color: #94a3b8; font-size: 0.85rem;">Privacidad</a>';
+
+            const cookLi = document.createElement('li');
+            cookLi.innerHTML = '<a href="pages/cookies.html" style="color: #94a3b8; font-size: 0.85rem;">Cookies</a>';
+
+            footerLinks.appendChild(legalLi);
+            footerLinks.appendChild(privLi);
+            footerLinks.appendChild(cookLi);
+        }
+    });
+</script>
+<script src="assets/js/footer-horizontal.js"></script>

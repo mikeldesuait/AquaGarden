@@ -1,0 +1,2675 @@
+:root {
+  --bg-light: #f8fafc;      /* Fondo general blanco roto (muy limpio) */
+  --bg-card: #ffffff;       /* Tarjetas en blanco puro */
+  --primary: #84cc16;       /* Verde corporativo (Ropa) */
+  --primary-dark: #65a30d;  /* Verde oscuro para hovers */
+  --secondary: #38bdf8;     /* Azul agua (La gota) */
+  --text-main: #0f172a;     /* Texto principal oscuro (azul noche) */
+  --text-muted: #475569;    /* Texto secundario gris */
+  --font-heading: 'Poppins', sans-serif;
+  --font-base: 'Inter', sans-serif;
+  --transition: 0.3s ease;
+  --shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bg-light); color: var(--text-main); font-family: var(--font-base); line-height: 1.7; }
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; color: var(--text-main); }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* HEADER */
+.header { position: fixed; width: 100%; top: 0; z-index: 1000; padding: 1.2rem 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+.header__container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 2px;}
+.logo span { color: var(--secondary); } /* La & en azul */
+.header-logo-img { height: 46px; width: auto; margin-right: 0px; margin-left: -5px; margin-top: -2px; }
+
+/* NAVEGACIÓN */
+.nav__list { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav__link { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); transition: color var(--transition); }
+.nav__link:hover, .nav__link.active { color: var(--primary); } /* Hover en verde */
+
+/* BOTONES */
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.8rem 2rem; border-radius: 4px; font-weight: 600; font-size: 0.95rem; transition: all var(--transition); cursor: pointer; border: none; }
+.btn--primary { background: var(--primary); color: var(--text-main); } /* Botón verde con texto oscuro */
+.btn--primary:hover { background: var(--text-main); color: var(--bg-light); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15); }
+.btn--lg { padding: 1rem 2.5rem; font-size: 1.1rem; }
+
+/* HERO (La portada mantiene la foto oscura para que el texto blanco resalte) */
+.hero__text { font-size: 1.2rem; color: #e2e8f0; margin-bottom: 2.5rem; }
+
+/* SECCIONES Y TARJETAS */
+.section { padding: 6rem 0; }
+.section-header { margin-bottom: 3rem; text-align: center; }
+.section-title { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--text-main); }
+.section-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.card { background: var(--bg-card); padding: 3rem 2rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); box-shadow: var(--shadow); transition: all var(--transition); border-top: 3px solid transparent; cursor: pointer; display: flex; flex-direction: column; }
+.card:hover { transform: translateY(-5px); border-top-color: var(--primary); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.card__num { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: #cbd5e1; margin-bottom: 1rem; transition: color 0.3s; }
+.card:hover .card__num { color: var(--primary); }
+.card__title { font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-main); }
+.card__desc { color: var(--text-muted); font-size: 0.95rem; }
+.card__content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+.card__content.is-open { max-height: 500px; }
+
+/* FORMULARIO */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 500; font-size: 0.9rem; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 1rem; background: var(--bg-card); border: 1px solid #cbd5e1; border-radius: 4px; color: var(--text-main); font-family: inherit; transition: border 0.3s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.2); }
+
+/* FOOTER */
+.footer { background: var(--text-main); padding: 4rem 0 2rem; margin-top: 4rem; }
+.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer h3 { font-size: 1.1rem; margin-bottom: 1.5rem; color: #ffffff; }
+.footer p, .footer a, .footer ul { color: #94a3b8; font-size: 0.95rem; }
+.footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer a:hover { color: var(--primary); }
+.footer .logo { color: #ffffff; }
+.footer__bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-size: 0.85rem; }
+
+/* SELECTOR DE IDIOMA */
+.lang-select { background: transparent; border: 1px solid rgba(0,0,0,0.2); color: var(--text-main); padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.9rem; outline: none; transition: border-color 0.3s; }
+.lang-select:hover { border-color: var(--primary); }
+.lang-select option { background: var(--bg-card); color: var(--text-main); }
+
+@media (max-width: 768px) {
+  .header__container { flex-direction: column; gap: 1rem; }
+  .nav__list { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+}
+
+/* 1. Fusionar la cabecera con la foto (Transparente y flotante) */
+.header {
+    background: transparent !important;
+    border-bottom: none !important;
+    padding: 1.5rem 0;
+}
+/* Quitamos el fondo blanco y la sombra que le dimos antes */
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+}
+/* Hacemos que el texto de la cabecera sea BLANCO para que se lea sobre la foto */
+.header .logo, .header .nav__link {
+    color: #ffffff !important;
+}
+.header .logo span {
+    color: var(--primary) !important; /* La & en verde brillante */
+}
+/* El botón de contacto de la cabecera */
+.header .btn--primary {
+    background: var(--primary);
+    color: #0f172a;
+}
+
+/* 2. Hacer que la foto de la piscina suba hasta arriba del todo */
+
+/* 3. Suavizar el paso de la foto a la sección blanca */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, rgba(248,250,252,0) 0%, rgba(248,250,252,1) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+.header .lang-select {
+    border-color: rgba(255,255,255,0.5);
+    color: #ffffff;
+}
+.header.scrolled .lang-select {
+    border-color: rgba(0,0,0,0.2);
+    color: var(--text-main);
+}
+
+/* SOLUCIÓN DEFINITIVA AL SCROLL */
+.header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+/* Cuando el usuario hace scroll (usando JS en el paso 2), se activa esta clase */
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 0.8rem 0 !important; /* Se hace un poco más fina */
+}
+
+/* Forzar que las letras sean NEGRAS cuando tiene la clase scrolled */
+.header.scrolled .logo,
+.header.scrolled .nav__link,
+.header.scrolled .logo span {
+    color: var(--text-main) !important;
+}
+
+/* El botón de contacto mantiene su color */
+.header.scrolled .btn--primary {
+    background: var(--primary);
+    color: var(--text-main);
+}
+
+/* El selector de idioma cambia a colores oscuros */
+.header.scrolled .lang-select {
+    border-color: rgba(0,0,0,0.2);
+    color: var(--text-main);
+}
+
+/* 1. Mejorar el contraste y la visibilidad de las tarjetas */
+.card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important; /* Borde gris suave para separarlas del fondo */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01) !important; /* Sombra más definida */
+}
+
+.card:hover {
+    border-color: var(--primary) !important; /* Borde verde al pasar el ratón */
+    box-shadow: 0 20px 30px -10px rgba(132, 204, 22, 0.15) !important; /* Sombra verdosa sutil */
+}
+
+/* 2. Hacer que el título de la tarjeta destaque más */
+.card__title {
+    font-size: 1.4rem !important;
+    color: var(--text-main) !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.75rem !important;
+}
+
+/* 3. Darle un toque de color al número para que no parezca tan apagado */
+.card__num {
+    color: #94a3b8 !important; /* Gris más oscuro */
+    font-size: 3rem !important;
+    opacity: 0.3 !important; /* Un poco de transparencia */
+}
+
+.card:hover .card__num {
+    color: var(--primary) !important;
+    opacity: 1 !important; /* Brilla en verde al pasar el ratón */
+}
+
+/* 4. Suavizar un poco el fondo general para que el blanco de las tarjetas resalte más */
+body {
+    background-color: #f1f5f9 !important; /* Un gris muy, muy clarito (casi blanco) */
+}
+
+/* 1. Cambiar el fondo de la sección de servicios para que contraste */
+.section {
+    background-color: #e2e8f0 !important; /* Gris azulado un poco más oscuro */
+}
+
+/* 2. Hacer que las tarjetas destaquen con fuerza */
+.card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important; /* Borde un poco más visible */
+     /* ¡Toque de color! Borde superior verde */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; /* Sombra más realista */
+}
+
+.card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* 3. El número ahora es verde corporativo y visible siempre */
+.card__num {
+    color: var(--primary) !important; /* Verde brillante */
+    opacity: 1 !important; 
+    font-size: 2.5rem !important;
+    font-weight: 800 !important;
+}
+
+/* 4. Mejorar la legibilidad del texto */
+.card__title {
+    color: #0f172a !important;
+}
+.card__desc {
+    color: #475569 !important;
+    font-size: 1rem !important;
+}
+
+/* 1. Quitar el fondo gris de la sección para que todo fluya */
+.section {
+    background-color: transparent !important; 
+}
+body {
+    background-color: #f8fafc !important; /* Fondo general claro */
+}
+
+/* 2. Suavizar el degradado de la foto hacia el fondo (evitar el corte) */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, rgba(248,250,252,0) 0%, #f8fafc 100%) !important;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 3. Rediseño de las tarjetas: Contorno y sombra verde sutil */
+.card {
+    background: #ffffff !important;
+    border: 2px solid #e2e8f0 !important; /* Borde gris suave por defecto */
+     /* Mantenemos el techo verde */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Efecto al pasar el ratón: Todo se vuelve verde y resplandece */
+.card:hover {
+    border-color: var(--primary) !important; /* Contorno entero verde */
+    box-shadow: 0 10px 25px -5px rgba(132, 204, 22, 0.3) !important; /* Sombra verde (Glow) */
+    transform: translateY(-5px) !important;
+}
+
+/* 4. Ajustes de texto para que respire mejor */
+.card__title {
+    color: #0f172a !important;
+}
+.card__desc {
+    color: #475569 !important;
+}
+
+/* 1. Hacer el texto secundario (el de las zonas) más legible */
+.hero__text {
+    font-size: 1.3rem !important; /* Un poco más grande */
+    font-weight: 500 !important; /* Un poco más grueso */
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important; /* Sombra negra fuerte para que destaque sobre el agua */
+    max-width: 90% !important;
+}
+
+/* 2. Reforzar la sombra del titular principal por si acaso */
+.hero__title {
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 3. Oscurecer un poco más la zona izquierda de la foto para que el texto respire */
+.hero::before {
+    background: linear-gradient(to right, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.7) 40%, rgba(15,23,42,0.2) 100%) !important;
+}
+
+/* 1. Empujar el texto hacia abajo para que no choque con la cabecera */
+
+/* 2. Ajustar la altura del Hero para que todo respire mejor */
+
+/* 3. Si en móvil se ve muy apretado, lo arreglamos */
+@media (max-width: 768px) {
+}
+
+/* --- ESTILOS RESPONSIVE DEFINITIVOS --- */
+@media (max-width: 900px) {
+    /* Mostrar el botón hamburguesa */
+    .mobile-menu-btn { 
+        display: block !important; 
+        background: none; 
+        border: none; 
+        font-size: 2rem; 
+        color: var(--text-main); 
+        cursor: pointer; 
+    }
+
+    /* Ocultar el menú por defecto y hacerlo desplegable */
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        display: none; /* Oculto por defecto */
+        border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .nav.open {
+        display: block !important; /* Se muestra al pulsar */
+    }
+
+    .nav__list {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    /* Si la cabecera se vuelve blanca al hacer scroll, que el botón cambie a negro */
+    .header.scrolled .mobile-menu-btn { color: var(--text-main) !important; }
+    
+    /* El texto de la cabecera cuando es móvil y estamos arriba del todo (fondo de foto) */
+    .header:not(.scrolled) .mobile-menu-btn { color: #fff !important; }
+
+    /* Ajustar el Hero para móviles */
+    .hero {
+        height: 100vh !important;
+        padding-top: 100px !important;
+        padding-bottom: 50px !important;
+        display: flex;
+        align-items: center;
+    }
+    
+    .hero__title {
+        font-size: 2.2rem !important;
+        text-align: center;
+    }
+    
+    .hero__text {
+        font-size: 1.1rem !important;
+        text-align: center;
+    }
+
+    .hero__actions {
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Ocultar el selector de idioma clásico en el menú de móvil para que no quede feo */
+    .nav__list li:last-child {
+        margin-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* --- RESTAURACIÓN DEL HERO (Fondo y Textos) --- */
+.hero {
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    margin-top: -80px !important; /* Sube para que la cabecera flote */
+    padding-top: 80px !important;
+    background: url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover !important;
+}
+
+.hero::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(to right, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.6) 50%, rgba(15,23,42,0.2) 100%) !important;
+}
+
+.hero__content {
+    position: relative !important;
+    z-index: 10 !important; /* Por encima del degradado */
+    max-width: 700px !important;
+    padding-top: 80px !important;
+}
+
+.hero__title {
+    color: #ffffff !important;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+}
+
+.hero__text {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+}
+
+/* --- BOTÓN MÓVIL --- */
+.mobile-menu-btn { display: none; background: none; border: none; font-size: 2rem; cursor: pointer; }
+
+/* --- RESPONSIVE (MÓVILES Y TABLETS) --- */
+@media (max-width: 900px) {
+    .mobile-menu-btn { display: block !important; color: #fff; }
+    .header.scrolled .mobile-menu-btn { color: var(--text-main); }
+    
+    .nav {
+        position: absolute; top: 100%; left: 0; width: 100%;
+        background: #ffffff; padding: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        display: none; border-bottom: 1px solid #e2e8f0;
+    }
+    .nav.open { display: block !important; }
+    .nav__list { flex-direction: column; align-items: center; gap: 1.5rem; }
+    .nav__link { color: var(--text-main) !important; }
+    
+    .hero { height: auto !important; min-height: 100vh !important; padding-top: 120px !important; padding-bottom: 80px !important; }
+    .hero__title { font-size: 2.5rem !important; text-align: center; }
+    .hero__text { text-align: center; font-size: 1.1rem !important; }
+    .hero__actions { justify-content: center; display: flex; }
+    .hero__content { padding-top: 0 !important; }
+}
+
+/* =========================================
+   REDIMENSIONAR LOGO Y CABECERA (ESCRITORIO)
+   ========================================= */
+.header {
+    padding: 1.5rem 0 !important; /* Más espacio arriba y abajo */
+}
+
+.logo {
+    font-size: 1.8rem !important; /* Texto más grande */
+}
+
+.header-logo-img {
+    height: 55px !important; /* La gota más grande */
+    width: auto !important;
+    margin-right: 8px !important;
+    margin-top: -4px !important;
+}
+
+.nav__list {
+    gap: 3rem !important; /* Más separación entre los enlaces */
+}
+
+/* =========================================
+   RESPONSIVE (MÓVILES Y TABLETS)
+   ========================================= */
+@media (max-width: 900px) {
+    /* Hacer que la cabecera sea más alta para que respire */
+    .header {
+        padding: 1rem 0 !important;
+    }
+
+    .header__container {
+        flex-wrap: wrap !important; /* Permite que el logo y el botón se coloquen bien */
+    }
+
+    /* Hacer el logo un poco más grande en móvil */
+    .logo {
+        font-size: 1.5rem !important;
+    }
+
+    .header-logo-img {
+        height: 42px !important;
+    }
+
+    /* Separar el botón hamburguesa del logo */
+    .mobile-menu-btn {
+        display: block !important;
+        font-size: 2.2rem !important;
+        margin-left: auto !important; /* Lo empuja a la derecha */
+        padding: 0.5rem !important;
+    }
+
+    /* Dar más aire al menú desplegable */
+    .nav {
+        padding: 2.5rem 2rem !important;
+    }
+    
+    .nav__list {
+        gap: 2rem !important;
+    }
+    
+    .nav__link {
+        font-size: 1.2rem !important; /* Letras más grandes en el menú móvil */
+    }
+}
+
+/* Bajar y suavizar el degradado de transición */
+.hero::after {
+    height: 60px !important; /* Reducimos la altura (antes eran 150px) */
+    background: linear-gradient(to bottom, rgba(248,250,252,0) 0%, rgba(248,250,252,1) 100%) !important;
+}
+
+/* Si queremos que la foto ocupe toda la pantalla y se vea más imponente */
+.hero {
+    height: 100vh !important; /* Forzamos altura completa de pantalla */
+    background-position: center 30% !important; /* Ajustamos la foto para que se vea más piscina */
+}
+
+/* Degradado ultra fino y casi transparente */
+.hero::after {
+    height: 40px !important; /* Muy bajito */
+    background: linear-gradient(to bottom, rgba(248, 250, 252, 0) 0%, rgba(248, 250, 252, 0.8) 100%) !important; /* Casi transparente */
+}
+
+/* Ajustar la foto para que muestre más piscina y menos piedra */
+.hero {
+    background-position: center 60% !important; 
+}
+
+/* 1. Eliminar el degradado feo que estaba causando el corte blanco */
+.hero::after {
+    display: none !important; 
+}
+
+/* 2. Hacer que la foto termine con una curva elegante (estilo Apple) */
+.hero {
+    clip-path: ellipse(150% 100% at 50% 0%) !important; /* Crea la curva en la parte de abajo */
+    margin-bottom: 2rem !important; 
+}
+
+/* 3. Asegurarnos de que el fondo de los servicios sea un gris muy suave, no blanco puro */
+body {
+    background-color: #f8fafc !important; 
+}
+
+/* 4. Darle un poco de aire a la sección de servicios para que no choque */
+.section {
+    padding-top: 4rem !important;
+}
+
+/* 1. La curva (Clip-path) con un poco de margen para que respire */
+.hero {
+    clip-path: ellipse(150% 100% at 50% 0%) !important;
+    margin-bottom: -1px !important; /* Evita una línea blanca de 1px */
+}
+
+/* 2. La magia: Un degradado casi transparente que nace desde la curva hacia el fondo blanco */
+.hero::after {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    bottom: -20px !important; /* Se coloca justo debajo de la curva */
+    left: 0 !important;
+    width: 100% !important;
+    height: 80px !important;
+    background: radial-gradient(ellipse at center, rgba(248, 250, 252, 0.9) 0%, rgba(248, 250, 252, 0) 70%) !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+}
+
+/* 1. Eliminar el margen negativo que hacía que la foto se metiera debajo de la cabecera */
+.hero {
+    margin-top: 0 !important; 
+    padding-top: 140px !important; /* Deja espacio para que la cabecera fija no tape el texto */
+    height: calc(100vh - 80px) !important; /* Ajusta la altura para que no desborde */
+    clip-path: ellipse(150% 100% at 50% 0%) !important; 
+}
+
+/* 2. Quitar el resplandor inferior que estaba haciendo un efecto extraño */
+.hero::after {
+    display: none !important;
+}
+
+/* 3. Asegurar que la cabecera se vea bien cuando hacemos scroll */
+.header {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+}
+.header .logo, .header .nav__link {
+    color: var(--text-main) !important; /* Letras oscuras siempre */
+}
+.header .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. Ajustar la sección de servicios para que no quede pegada a la foto */
+.section {
+    padding-top: 2rem !important;
+}
+
+/* 1. CABECERA INTEGRADA Y DIFUMINADA */
+.header {
+    position: fixed !important;
+    background: linear-gradient(to bottom, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0) 100%) !important;
+    border-bottom: none !important;
+    padding: 1.5rem 0 !important;
+}
+
+/* Letras blancas sobre la foto */
+.header .logo, .header .nav__link, .header .logo span {
+    color: #ffffff !important;
+}
+.header .logo span {
+    color: var(--primary) !important; /* La & en verde */
+}
+
+/* El botón de contacto mantiene su verde */
+.header .btn--primary {
+    background: var(--primary) !important;
+    color: var(--text-main) !important;
+}
+
+/* El selector de idioma en blanco */
+.header .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.3) !important;
+}
+
+/* 2. LA FOTO (HERO) SUBE HASTA ARRIBA */
+.hero {
+    margin-top: 0 !important;
+    padding-top: 160px !important; /* Para que el texto no choque con la cabecera */
+    height: 90vh !important; /* Un poco menos de pantalla completa para que se vea la curva */
+    clip-path: ellipse(150% 100% at 50% 0%) !important; /* La curva que te gustó */
+}
+
+/* 3. LA FUSIÓN SUAVE POR ABAJO (Sustituye al corte seco) */
+.hero::after {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 150px !important;
+    background: linear-gradient(to bottom, rgba(248, 250, 252, 0) 0%, rgba(248, 250, 252, 1) 100%) !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+
+/* 4. Asegurar que el texto del Hero esté por encima de la fusión */
+.hero__content {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* 5. Efecto Scroll: Cuando bajas, la cabecera se vuelve blanca para que se lea */
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+}
+.header.scrolled .logo, 
+.header.scrolled .nav__link, 
+.header.scrolled .logo span {
+    color: var(--text-main) !important;
+}
+.header.scrolled .lang-select {
+    color: var(--text-main) !important;
+    border-color: rgba(0,0,0,0.2) !important;
+}
+
+/* --- TEXTOS DEL HERO EN VERSIÓN ESCRITORIO --- */
+@media (min-width: 901px) {
+    .hero__title {
+        font-size: 5.5rem !important; /* Titular gigante e imponente */
+        line-height: 1.1 !important;
+        max-width: 900px !important; /* Para que no se estire demasiado */
+    }
+    
+    .hero__text {
+        font-size: 1.5rem !important; /* Subtítulo más grande y legible */
+        max-width: 700px !important;
+        margin-bottom: 3rem !important;
+    }
+
+    .hero__actions .btn {
+        padding: 1.2rem 3.5rem !important; /* Botón más grande */
+        font-size: 1.3rem !important; 
+    }
+}
+
+/* --- MANTENER EL TAMAÑO EN MÓVILES --- */
+@media (max-width: 900px) {
+    .hero__title {
+        font-size: 2.5rem !important; /* Tamaño controlado para pantallas pequeñas */
+    }
+    .hero__text {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* --- 1. ARREGLO DE JUSTIFICACIÓN Y POSICIÓN DEL TEXTO --- */
+.hero__content {
+    text-align: center !important; /* Centramos todo el bloque para que se vea elegante */
+    margin: 0 auto !important;     /* Lo centramos en la pantalla */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    max-width: 1000px !important;
+}
+
+.hero__title {
+    font-size: 4.5rem !important;  /* Un poco más pequeño para que no se vea tosco */
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1.5rem !important;
+    text-align: center !important;
+    letter-spacing: -1px !important; /* Toque de diseño moderno */
+}
+
+.hero__text {
+    font-size: 1.4rem !important;
+    max-width: 800px !important;
+    text-align: center !important;
+    margin-bottom: 2.5rem !important;
+    color: #e2e8f0 !important;
+    line-height: 1.6 !important;
+}
+
+/* En móviles, ajustamos para que siga viéndose bien */
+@media (max-width: 900px) {
+    .hero__title { font-size: 2.8rem !important; letter-spacing: 0 !important; }
+    .hero__text { font-size: 1.1rem !important; padding: 0 1rem !important; }
+}
+
+/* Botón principal: Estilo elegante de cristal */
+.btn--primary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(5px) !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn--primary:hover {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* Botón de la cabecera (Contacto) para que no destaque tanto */
+.header .btn--primary {
+    background: transparent !important;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+}
+.header .btn--primary:hover {
+    background: #ffffff !important;
+    color: var(--text-main) !important;
+}
+
+/* 2. Tarjetas de Servicios más sutiles */
+.card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02) !important; /* Sombra casi invisible */
+    border: 1px solid #e2e8f0 !important;
+     /* Un toque fino de color */
+}
+.card:hover {
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05) !important; /* Sombra suave al pasar */
+}
+
+/* 1. Recuperar el botón de la cabecera (Contacto) para que se vea */
+.header .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+.header .btn--primary:hover {
+    background: #65a30d !important; /* Un verde un poco más oscuro al pasar el ratón */
+    color: #ffffff !important;
+}
+
+/* 2. Recuperar el botón principal del Hero (Solicitar Presupuesto) */
+/* Mantenemos el verde corporativo pero con un toque más elegante (sin sombras exageradas) */
+.hero .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important; /* Texto oscuro para que contraste con el verde */
+    border: none !important;
+    font-weight: 700 !important;
+    padding: 1rem 2.5rem !important;
+    box-shadow: 0 4px 15px rgba(132, 204, 22, 0.3) !important; /* Sombra sutil verde */
+}
+
+.hero .btn--primary:hover {
+    background: #65a30d !important; /* Verde más oscuro */
+    color: #ffffff !important;     /* Texto blanco */
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(132, 204, 22, 0.4) !important;
+}
+
+/* 3. Arreglar el copywriting del botón y el subtítulo */
+/* (Por si el comando anterior no los cambió correctamente) */
+
+/* 1. BOTONES TIPO PÍLDORA (Redondeados) */
+.btn {
+    border-radius: 50px !important; /* Esquinas totalmente redondeadas */
+}
+.header .btn--primary, 
+.hero .btn--primary {
+    border-radius: 50px !important;
+}
+
+/* 2. RECUPERAR LAS TARJETAS DE SERVICIOS (Visibles y elegantes) */
+.card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important; /* Un borde gris un poco más visible */
+    border-radius: 16px !important; /* Esquinas muy redondeadas */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; /* Sombra suave que las hace flotar */
+    padding: 2.5rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1) !important;
+    border-color: var(--primary) !important; /* Se ilumina el borde en verde */
+}
+
+/* 3. AJUSTAR LA POSICIÓN DEL HERO PARA QUE EL BOTÓN NO SE CORTE */
+.hero__content {
+    padding-bottom: 50px !important; /* Separa el texto del borde inferior de la foto */
+}
+
+.hero__text {
+    margin-bottom: 2rem !important; /* Menos espacio entre el texto y el botón */
+}
+
+/* 1. Arreglar el contenedor de las tarjetas para que se vean */
+#services-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 2rem !important;
+    margin-top: 2rem !important;
+    min-height: 200px !important; /* Asegura que tenga espacio para pintarse */
+}
+
+/* 2. Asegurarnos de que las tarjetas tienen fondo y color */
+.card {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    padding: 3rem 2rem !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 3. Ajustar el espacio del Hero para que el texto no se oculte tras la cabecera */
+.hero {
+    padding-top: 180px !important; /* Más margen superior */
+    padding-bottom: 100px !important; /* Más margen inferior para que respire el botón */
+    height: auto !important;
+    min-height: 90vh !important;
+    align-items: flex-start !important; /* Alinea el contenido hacia arriba */
+}
+
+.hero__content {
+    margin-top: 2rem !important;
+}
+
+/* 1. Darle vida a las tarjetas con un borde superior degradado */
+.card {
+    position: relative !important;
+    border: 1px solid #e2e8f0 !important;
+    border-top: none !important; /* Quitamos el borde sólido */
+    background: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+}
+
+/* El truco del degradado: una línea fina que va de verde a transparente */
+.card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 4px !important; /* Grosor de la línea */
+    border-radius: 16px 16px 0 0 !important; /* Redondeamos las esquinas de la línea */
+    background: linear-gradient(90deg, var(--primary) 0%, rgba(132, 204, 22, 0) 100%) !important;
+}
+
+/* 2. Efecto al pasar el ratón (Sombra verde sutil) */
+.card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 30px -5px rgba(132, 204, 22, 0.2) !important; /* Resplandor verde suave */
+    border-color: #cbd5e1 !important;
+}
+
+/* 3. El número un poco más integrado con el verde */
+.card__num {
+    color: var(--primary) !important;
+    opacity: 0.8 !important;
+    transition: opacity 0.3s ease !important;
+}
+.card:hover .card__num {
+    opacity: 1 !important;
+}
+
+/* Estilos para el desplegable del acordeón */
+.card--accordion {
+    cursor: pointer;
+    overflow: hidden; /* Evita que el texto se salga al abrir */
+}
+.card__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+.card__content.is-open {
+    max-height: 400px; /* Altura máxima que alcanzará al abrirse */
+}
+
+/* 1. Arreglar la cabecera en las páginas internas (Servicios, Nosotros, Contacto) */
+/* Hacemos que sea blanca sólida y las letras oscuras para que haya máximo contraste */
+body > header:not(.header-transparent) {
+    background: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+    border-bottom: none !important;
+}
+
+/* 2. En el Index (donde está la foto), mantenemos la cabecera transparente flotante */
+/* Pero cuando bajamos, se vuelve blanca (esto ya lo teníamos, lo reforzamos) */
+.header.scrolled {
+    background: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+}
+
+/* 3. Asegurarnos de que en las páginas internas el texto de la cabecera sea oscuro */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #0f172a !important;
+}
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. Darle un poco de aire al título en las páginas internas */
+main[style*="padding-top"] {
+    padding-top: 140px !important; /* Ajusta este valor si necesitas más o menos espacio */
+}
+
+/* 1. Devolver el fondo oscuro (cristal ahumado) a la cabecera en páginas internas */
+body > header:not(.header-transparent) {
+    background: rgba(15, 23, 42, 0.95) !important; /* Azul noche semitransparente */
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+    border-bottom: none !important;
+}
+
+/* 2. Poner las letras en BLANCO en esa cabecera oscura */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #ffffff !important;
+}
+
+/* 3. La & del logo se queda en verde brillante */
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important; 
+}
+
+/* 4. El selector de idioma también se adapta al fondo oscuro */
+body > header:not(.header-transparent) .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.3) !important;
+}
+body > header:not(.header-transparent) .lang-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+/* 5. El botón de contacto resalta en verde */
+body > header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* Refinar el degradado de la cabecera en páginas internas */
+body > header:not(.header-transparent) {
+    /* Un degradado que va de azul noche muy oscuro a transparente */
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 60%, rgba(15, 23, 42, 0) 100%) !important;
+    backdrop-filter: blur(8px) !important; /* Un desenfoque sutil para que parezca cristal */
+    border-bottom: none !important;
+    box-shadow: none !important; /* Quitamos la sombra dura para que fluya */
+    padding: 1.5rem 0 !important;
+}
+
+/* Forzar que el texto sea blanco puro y tenga una pequeña sombra para resaltar */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important; /* Sombra sutil en las letras */
+}
+
+/* El verde de la & y el botón de contacto */
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+body > header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+}
+
+/* El selector de idioma */
+body > header:not(.header-transparent) .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.5) !important;
+    background: rgba(0,0,0,0.2) !important;
+}
+body > header:not(.header-transparent) .lang-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+/* 1. Forzar cabecera blanca sólida en las páginas internas */
+body > header:not(.header-transparent) {
+    background: #ffffff !important;
+    backdrop-filter: none !important; /* Quitamos el efecto cristal */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 1.2rem 0 !important;
+}
+
+/* 2. Asegurar que las letras son oscuras */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. El selector de idioma en modo claro */
+body > header:not(.header-transparent) .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* 4. El botón de contacto */
+body > header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+}
+
+/* 5. Quitar cualquier rastro de scroll de estas páginas internas */
+body > header:not(.header-transparent).scrolled {
+    background: #ffffff !important;
+}
+
+/* 1. Restaurar el degradado oscuro en las páginas internas */
+body > header:not(.header-transparent) {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 60%, rgba(15, 23, 42, 0) 100%) !important;
+    backdrop-filter: blur(10px) !important; /* Efecto cristal */
+    border-bottom: none !important;
+    box-shadow: none !important;
+    position: sticky !important; /* Se queda fija al hacer scroll */
+    top: 0;
+    padding: 1.5rem 0 !important;
+}
+
+/* 2. Asegurar que las letras son blancas para leerse sobre el degradado oscuro */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+}
+
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. El botón de contacto y el selector de idioma se adaptan al fondo oscuro */
+body > header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+body > header:not(.header-transparent) .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.3) !important;
+    background: rgba(0,0,0,0.2) !important;
+}
+body > header:not(.header-transparent) .lang-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+/* 4. Evitar que el degradado se vuelva transparente al hacer scroll */
+body > header:not(.header-transparent).scrolled {
+    background: rgba(15, 23, 42, 0.95) !important; /* Fondo sólido oscuro al bajar */
+}
+
+/* --- ARREGLO DEL SCROLL EN PÁGINAS INTERNAS --- */
+
+/* 1. Estado inicial: Degradado oscuro (el que te gusta) */
+body > header:not(.header-transparent) {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 60%, rgba(15, 23, 42, 0) 100%) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* 2. Estado al hacer scroll (cuando el usuario baja): Cristal ahumado sólido */
+body > header:not(.header-transparent).scrolled {
+    background: rgba(15, 23, 42, 0.98) !important; /* Azul noche casi opaco */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+    padding: 1rem 0 !important; /* Se hace un poco más fina para dejar ver más contenido */
+}
+
+/* 3. Forzar que las letras sigan siendo BLANCAS al hacer scroll */
+body > header:not(.header-transparent).scrolled .logo,
+body > header:not(.header-transparent).scrolled .nav__link {
+    color: #ffffff !important;
+}
+body > header:not(.header-transparent).scrolled .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. El selector de idioma se mantiene oscuro y legible */
+body > header:not(.header-transparent).scrolled .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.3) !important;
+    background: rgba(255,255,255,0.1) !important;
+}
+
+
+/* 1. El degradado se mantiene SIEMPRE, incluso al hacer scroll */
+body > header:not(.header-transparent) {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 60%, rgba(15, 23, 42, 0) 100%) !important;
+    backdrop-filter: blur(12px) !important; /* Efecto cristal */
+    border-bottom: none !important;
+    box-shadow: none !important;
+    padding: 1.5rem 0 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 2. Anulamos el cambio brusco al hacer scroll (mantenemos el degradado) */
+body > header:not(.header-transparent).scrolled {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 60%, rgba(15, 23, 42, 0) 100%) !important;
+    padding: 1.5rem 0 !important;
+}
+
+/* 3. Aseguramos que el texto y el menú siempre se lean */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link,
+body > header:not(.header-transparent).scrolled .logo,
+body > header:not(.header-transparent).scrolled .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6) !important; /* Sombra para legibilidad sobre blanco */
+}
+
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. El botón verde y el selector de idioma siempre visibles */
+body > header:not(.header-transparent) .btn--primary,
+body > header:not(.header-transparent).scrolled .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+body > header:not(.header-transparent) .lang-select,
+body > header:not(.header-transparent).scrolled .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.4) !important;
+    background: rgba(15, 23, 42, 0.3) !important;
+}
+
+/* --- ELIMINAR LA LÍNEA DE LA CABECERA --- */
+
+/* 1. Quitar cualquier borde, sombra o línea divisoria */
+body > header:not(.header-transparent) {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* 2. Hacer que el degradado se funda perfectamente con el fondo de la web */
+body > header:not(.header-transparent) {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.85) 50%, rgba(248, 250, 252, 0) 100%) !important;
+    backdrop-filter: blur(0px) !important; /* Quitamos el desenfoque que hacía el efecto "corte" */
+}
+
+/* 3. Asegurarnos de que el fondo de la web sea exactamente igual al final del degradado */
+body {
+    background-color: #f8fafc !important;
+}
+
+
+/* 1. Fondo de la cabecera igual al de la web (blanco/gris claro) */
+body > header:not(.header-transparent) {
+    background: #f8fafc !important; /* El mismo fondo que el body */
+    border-bottom: none !important;
+    box-shadow: none !important;
+    padding: 1.5rem 0 !important;
+}
+
+/* 2. Letras del menú en oscuro para que se lean perfectamente */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important; /* La & en verde */
+}
+
+/* 3. El botón verde y el selector de idioma */
+body > header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+body > header:not(.header-transparent) .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* 4. Evitar que cambie al hacer scroll (se queda siempre integrada) */
+body > header:not(.header-transparent).scrolled {
+    background: #f8fafc !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important; /* Sombra muy sutil solo al bajar */
+}
+
+/* --- ESCUDO PARA LA CABECERA EN PÁGINAS INTERNAS --- */
+
+/* 1. Fondo blanco sólido para la cabecera (con un pelín de transparencia) */
+body > header:not(.header-transparent) {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03) !important;
+}
+
+/* 2. Forzar letras NEGRAS/OSCURAS para que se lean perfectamente */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link,
+body > header:not(.header-transparent).scrolled .logo,
+body > header:not(.header-transparent).scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche oscuro */
+    text-shadow: none !important;
+}
+
+/* La & se queda en verde */
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. Arreglar el selector de idioma */
+body > header:not(.header-transparent) .lang-select,
+body > header:not(.header-transparent).scrolled .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: #ffffff !important;
+}
+body > header:not(.header-transparent) .lang-select option {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+/* 4. El botón verde siempre visible */
+body > header:not(.header-transparent) .btn--primary,
+body > header:not(.header-transparent).scrolled .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* --- EFECTO CRISTAL ESMERILADO (GLASSMORPHISM) EN PÁGINAS INTERNAS --- */
+
+body > header:not(.header-transparent) {
+    background: rgba(255, 255, 255, 0.75) !important; /* Blanco semitransparente */
+    backdrop-filter: blur(12px) !important; /* Desenfoque de cristal */
+    -webkit-backdrop-filter: blur(12px) !important; /* Para Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important; /* Borde sutil */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important; /* Sombra elegante */
+}
+
+/* Al hacer scroll, la sombra se hace un pelín más fuerte para separarla */
+body > header:not(.header-transparent).scrolled {
+    background: rgba(255, 255, 255, 0.85) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Asegurar que el texto se lee nítido */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #0f172a !important;
+}
+
+/* El botón de contacto le damos un poco de sombra para que resalte */
+body > header:not(.header-transparent) .btn--primary {
+    box-shadow: 0 4px 10px rgba(132, 204, 22, 0.3) !important;
+}
+
+
+body > header:not(.header-transparent) {
+    background: #0f172a !important; /* Azul noche sólido y elegante */
+    border-bottom: none !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important; /* Sombra para separarla del fondo */
+    padding: 1.2rem 0 !important;
+}
+
+/* Letras en blanco para máximo contraste */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+/* La & en verde brillante */
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* El botón de contacto en verde */
+body > header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 15px rgba(132, 204, 22, 0.3) !important;
+}
+
+/* El selector de idioma (fondo oscuro, letras blancas) */
+body > header:not(.header-transparent) .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+body > header:not(.header-transparent) .lang-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+/* Evitar que cambie al hacer scroll (se mantiene oscura siempre) */
+body > header:not(.header-transparent).scrolled {
+    background: #0f172a !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+
+body > header:not(.header-transparent) {
+    /* Degradado diagonal de azules profundos */
+    background: linear-gradient(135deg, #0a0f1c 0%, #1e293b 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Asegurar que las letras blancas y el botón verde destacan sobre este nuevo fondo */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #ffffff !important;
+}
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+body > header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* Mantener el degradado al hacer scroll */
+body > header:not(.header-transparent).scrolled {
+    background: linear-gradient(135deg, #0a0f1c 0%, #1e293b 100%) !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+
+body > header:not(.header-transparent) {
+    /* Degradado diagonal: de azul noche profundo a verde corporativo oscuro */
+    background: linear-gradient(110deg, #0b1120 0%, #162415 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Al hacer scroll, mantenemos el mismo degradado */
+body > header:not(.header-transparent).scrolled {
+    background: linear-gradient(110deg, #0b1120 0%, #162415 100%) !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Asegurar que el texto blanco resalte */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link {
+    color: #ffffff !important;
+}
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important; /* La & en verde brillante */
+}
+
+
+/* 1. Fondo con degradado más notorio (Azul Noche a Verde Bosque) */
+body > header:not(.header-transparent) {
+    background: linear-gradient(90deg, #0a1128 0%, #142b1d 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
+}
+
+/* 2. Anular cualquier efecto raro al hacer scroll */
+body > header:not(.header-transparent).scrolled {
+    background: linear-gradient(90deg, #0a1128 0%, #142b1d 100%) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 3. Forzar que el texto sea siempre blanco puro y brillante */
+body > header:not(.header-transparent) .logo,
+body > header:not(.header-transparent) .nav__link,
+body > header:not(.header-transparent).scrolled .logo,
+body > header:not(.header-transparent).scrolled .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important; /* Sombra para que resalte siempre */
+}
+
+body > header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. Selector de idioma y botón de contacto siempre visibles */
+body > header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+body > header:not(.header-transparent) .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.3) !important;
+    background: rgba(255,255,255,0.1) !important;
+}
+body > header:not(.header-transparent) .lang-select option {
+    background: #0a1128;
+    color: #ffffff;
+}
+
+/* --- REDISEÑO PREMIUM DE LA SECCIÓN DE SERVICIOS --- */
+
+/* 1. Fondo de la página de servicios un poco más cálido/limpio */
+main[style*="padding-top"] {
+    background-color: #f8fafc !important;
+    padding-top: 160px !important; /* Más aire arriba */
+    padding-bottom: 100px !important;
+}
+
+/* 2. Título gigante y elegante */
+.section-title {
+    font-size: 3.5rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -1px !important;
+    color: #0f172a !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.section-subtitle {
+    font-size: 1.25rem !important;
+    color: #64748b !important;
+    margin-bottom: 4rem !important; /* Más separación antes de las tarjetas */
+}
+
+/* 3. Contenedor Grid con más espacio entre tarjetas */
+.grid {
+    gap: 2.5rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* 4. Tarjetas de Alta Gama (Grandes, blancas y con sombra suave) */
+.card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    padding: 3.5rem 2.5rem !important; /* Mucho aire dentro */
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05) !important; /* Sombra elegante */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Efecto rebote */
+    position: relative !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* 5. El efecto al pasar el ratón (Hover) */
+.card:hover {
+    transform: translateY(-8px) scale(1.02) !important; /* Se eleva y agranda un pelín */
+    box-shadow: 0 25px 50px -12px rgba(132, 204, 22, 0.25) !important; /* Resplandor verde */
+    border-color: var(--primary) !important;
+}
+
+/* 6. El número gigante y transparente de fondo */
+.card__num {
+    font-size: 4rem !important;
+    font-weight: 800 !important;
+    color: rgba(132, 204, 22, 0.15) !important; /* Verde muy suave */
+    position: absolute !important;
+    top: 1.5rem !important;
+    right: 2rem !important;
+    line-height: 1 !important;
+    transition: all 0.3s ease !important;
+    z-index: 0 !important;
+}
+
+.card:hover .card__num {
+    color: rgba(132, 204, 22, 0.3) !important; /* Se hace más visible al pasar el ratón */
+    transform: scale(1.1) !important;
+}
+
+/* 7. Títulos de las tarjetas más grandes y con peso */
+.card__title {
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-bottom: 1rem !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* 8. Descripción de la tarjeta más legible */
+.card__desc {
+    font-size: 1.05rem !important;
+    color: #475569 !important;
+    line-height: 1.6 !important;
+    position: relative !important;
+    z-index: 1 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* 9. La línea verde superior de la tarjeta (más elegante) */
+.card::before {
+    height: 4px !important;
+    background: linear-gradient(90deg, var(--primary) 0%, #a3e635 100%) !important;
+}
+
+/* =========================================
+   UNIFICAR TODAS LAS CABECERAS (EFECTO GLOBAL)
+   ========================================= */
+
+/* 1. Forzar el mismo estilo de cabecera en TODAS las páginas */
+header.header {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 60%, rgba(15, 23, 42, 0) 100%) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    position: sticky !important;
+    top: 0;
+    padding: 1.5rem 0 !important;
+    z-index: 1000;
+}
+
+/* 2. Anular cualquier cambio al hacer scroll (se mantiene el degradado) */
+header.header.scrolled {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 60%, rgba(15, 23, 42, 0) 100%) !important;
+    padding: 1.5rem 0 !important;
+}
+
+/* 3. Forzar letras blancas y logo blanco en TODAS las cabeceras */
+header.header .logo,
+header.header .nav__link,
+header.header .logo span {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+}
+header.header .logo span {
+    color: var(--primary) !important; /* La & en verde */
+}
+
+/* 4. El botón de contacto siempre verde */
+header.header .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* 5. El selector de idioma siempre visible */
+header.header .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.3) !important;
+    background: rgba(0,0,0,0.2) !important;
+}
+header.header .lang-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+/* =========================================
+   RESTAURAR DISEÑO ANTERIOR
+   ========================================= */
+
+/* 1. La cabecera vuelve a ser BLANCA SÓLIDA por defecto (para páginas internas) */
+header.header {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+    position: sticky !important;
+    top: 0;
+    padding: 1.2rem 0 !important;
+    z-index: 1000;
+}
+
+/* Anular cualquier efecto raro al hacer scroll */
+header.header.scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+    padding: 1.2rem 0 !important;
+}
+
+/* 2. Letras oscuras para que se lean sobre el fondo blanco */
+header.header .logo,
+header.header .nav__link {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+header.header .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. Botón y selector de idioma en modo claro */
+header.header .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+header.header .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* =========================================
+   EXCEPCIÓN: SOLO LA HOME (INDEX) ES TRANSPARENTE
+   ========================================= */
+/* Usamos .header-transparent que solo tiene el index.html */
+header.header.header-transparent {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0) 100%) !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+}
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* 1. Cambiar la foto por una de la Costa Blanca (Luminosa, con palmeras y agua clara) */
+.hero {
+    background: url('https://images.unsplash.com/photo-1549886064-6a6d8f4e2e18?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover !important;
+}
+
+/* 2. Suavizar el degradado oscuro: menos opaco para que se vea el sol y el paisaje */
+.hero::before {
+    background: linear-gradient(to right, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.5) 50%, rgba(15,23,42,0.1) 100%) !important;
+}
+
+/* --- ARREGLO URGENTE DE LA FOTO DE FONDO --- */
+
+.hero {
+    /* Usamos una imagen de una villa con piscina al sol, muy Costa Blanca */
+    background: url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover !important;
+    background-color: #0f172a !important; /* Color de fondo por si tarda en cargar */
+}
+
+/* Ajustamos el degradado para que la foto respire y el texto se lea */
+.hero::before {
+    background: linear-gradient(to right, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.4) 50%, rgba(15,23,42,0.1) 100%) !important;
+}
+
+
+/* 1. Fondo totalmente transparente en el Inicio */
+header.header.header-transparent {
+    background: transparent !important;
+    backdrop-filter: none !important; /* Quitamos el cristal para que se vea la foto nítida */
+    border-bottom: none !important;
+    box-shadow: none !important;
+    padding: 1.5rem 0 !important;
+}
+
+/* 2. Anular el fondo gris cuando bajamos */
+header.header.header-transparent.scrolled {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 3. Asegurar que el texto blanco se lea sobre la foto */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    /* Sombra fuerte solo en las letras para que resalten sin poner fondo */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.5) !important; 
+}
+
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. El botón y el selector de idioma adaptados */
+header.header.header-transparent .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+}
+header.header.header-transparent .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.6) !important;
+    background: rgba(0,0,0,0.2) !important; /* Un fondito negro sutil solo en el botón de idioma */
+}
+
+/* 5. Un toque de sombra en la parte superior de la foto para que el menú siempre sea legible */
+.hero::before {
+    background: linear-gradient(to bottom, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0) 20%, rgba(15,23,42,0) 100%) !important;
+}
+
+/* --- FORZAR QUE LA FOTO OCUPE TODA LA PANTALLA DESDE ARRIBA --- */
+
+/* 1. Quitar cualquier margen del body y html */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden;
+}
+
+/* 2. La foto sube hasta el borde superior absoluto */
+.hero {
+    margin-top: -100px !important; /* Sube la foto para que la cabecera flote sobre ella */
+    padding-top: 150px !important; /* Empuja el texto hacia abajo para que no lo tape la cabecera */
+    height: 100vh !important; /* Ocupa el 100% del alto de la pantalla */
+    min-height: 800px !important;
+    background-size: cover !important;
+    background-position: center center !important; /* Centra la foto para que se vea la piscina */
+}
+
+/* 3. Ajustar el degradado para que la parte de arriba se lea bien */
+.hero::before {
+    background: linear-gradient(to bottom, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0) 30%, rgba(15,23,42,0) 100%) !important;
+}
+
+
+header.header.header-transparent {
+    /* Degradado: Azul costa arriba, transparente abajo */
+    background: linear-gradient(to bottom, rgba(14, 165, 233, 0.4) 0%, rgba(14, 165, 233, 0.1) 60%, rgba(14, 165, 233, 0) 100%) !important;
+    backdrop-filter: blur(4px) !important; /* Un toque de cristal para que se integre */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+/* Asegurar que las letras son blancas y brillan */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* La & en su verde corporativo */
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* El botón de contacto resalta en verde */
+header.header.header-transparent .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* El selector de idioma con un tono azul cristalino */
+header.header.header-transparent .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.4) !important;
+    background: rgba(14, 165, 233, 0.3) !important;
+}
+header.header.header-transparent .lang-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+/* Evitar que la cabecera cambie de color al hacer scroll en el index */
+header.header.header-transparent.scrolled {
+    background: linear-gradient(to bottom, rgba(14, 165, 233, 0.4) 0%, rgba(14, 165, 233, 0.1) 60%, rgba(14, 165, 233, 0) 100%) !important;
+    box-shadow: none !important;
+}
+
+/* --- MANTENER EL AZUL COSTA AL HACER SCROLL EN EL INDEX --- */
+
+/* 1. Forzar el fondo azul aunque el JavaScript intente cambiarlo */
+header.header.header-transparent,
+header.header.header-transparent.scrolled {
+    background: linear-gradient(to bottom, rgba(14, 165, 233, 0.85) 0%, rgba(14, 165, 233, 0.5) 60%, rgba(14, 165, 233, 0.1) 100%) !important;
+    backdrop-filter: blur(8px) !important; /* Un poco más de desenfoque al bajar para que el texto de detrás no moleste */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 2. Asegurar que el texto y los botones siguen viéndose bien */
+header.header.header-transparent.scrolled .logo,
+header.header.header-transparent.scrolled .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+}
+
+header.header.header-transparent.scrolled .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+header.header.header-transparent.scrolled .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.5) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* =========================================
+   CABECERA DEFINITIVA (AZUL SUTIL Y FIJA)
+   ========================================= */
+
+/* Forzamos el fondo sutil y la posición fija sin importar qué */
+html body header.header,
+html body header.header.header-transparent,
+html body header.header.scrolled {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 99999 !important; /* Asegura que esté por encima de todo */
+    
+    /* Degradado azul MUY sutil (del 15% al 0%) */
+    background: linear-gradient(to bottom, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0) 100%) !important;
+    backdrop-filter: blur(5px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+    padding: 1.5rem 0 !important;
+}
+
+/* Letras blancas con sombra para que se lean sobre el azul y la foto */
+html body header.header .logo,
+html body header.header .nav__link,
+html body header.header.header-transparent .logo,
+html body header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7) !important;
+}
+
+html body header.header .logo span {
+    color: var(--primary) !important;
+}
+
+/* Empujar el contenido hacia abajo para que la cabecera fija no lo tape */
+.hero {
+    padding-top: 140px !important;
+}
+
+/* --- 1. ESTADO INICIAL (ARRIBA DEL TODO) --- */
+/* Un azul un poquito más notable, pero elegante */
+header.header.header-transparent {
+    background: linear-gradient(to bottom, rgba(14, 165, 233, 0.3) 0%, rgba(14, 165, 233, 0.05) 100%) !important;
+    backdrop-filter: blur(8px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: none !important;
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 99999 !important;
+    padding: 1.5rem 0 !important;
+    transition: all 0.4s ease !important;
+}
+
+/* Letras blancas arriba */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    transition: color 0.4s ease !important;
+}
+
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* --- 2. ESTADO AL HACER SCROLL --- */
+/* La cabecera se vuelve blanca sólida para que el texto oscuro resalte */
+header.header.header-transparent.scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ¡LA MAGIA! Al hacer scroll, las letras se vuelven oscuras */
+header.header.header-transparent.scrolled .logo,
+header.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche */
+    text-shadow: none !important; /* Quitamos la sombra */
+}
+
+/* El botón y el selector de idioma al hacer scroll */
+header.header.header-transparent.scrolled .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+header.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* Asegurar que el contenido del Hero empieza abajo (no lo tapa la cabecera) */
+.hero {
+    padding-top: 140px !important;
+}
+
+/* --- ARREGLO DEFINITIVO DEL SCROLL (SIN BORROSIDAD) --- */
+
+/* 1. Estado al hacer scroll: Fondo blanco impoluto, sin blur */
+header.header.header-transparent.scrolled {
+    background: #ffffff !important; /* Blanco puro */
+    backdrop-filter: none !important; /* Quitamos el cristal que difumina las letras */
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 2. Letras oscuras y nítidas al bajar */
+header.header.header-transparent.scrolled .logo,
+header.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche */
+    text-shadow: none !important;
+}
+
+/* La & en verde */
+header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. Selector de idioma en modo claro */
+header.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* 4. El botón de contacto */
+header.header.header-transparent.scrolled .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* --- SOLUCIÓN DEFINITIVA: CSS PURO, SIN JAVASCRIPT --- */
+
+/* Forzar la cabecera a que sea siempre blanca y fija */
+header.header.header-transparent {
+    position: sticky !important; /* CSS moderno que se queda fija */
+    top: 0 !important;
+    background: #ffffff !important; /* Fondo blanco sólido siempre */
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+    z-index: 1000 !important;
+}
+
+/* Letras oscuras SIEMPRE (para que se lean sobre el blanco) */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #0f172a !important; /* Azul noche */
+    text-shadow: none !important;
+}
+
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* Ajustar el selector de idioma y el botón */
+header.header.header-transparent .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+header.header.header-transparent .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* Como la cabecera ya no es transparente, el Hero no necesita margen negativo */
+.hero {
+    margin-top: 0 !important;
+    padding-top: 100px !important;
+}
+
+
+header.header.header-transparent,
+header.header.header-transparent.scrolled {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.4) 60%, rgba(15, 23, 42, 0) 100%) !important;
+    backdrop-filter: blur(8px) !important; /* Efecto cristal ahumado */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 9999 !important;
+    padding: 1.2rem 0 !important;
+}
+
+/* Letras blancas con sombra fuerte para que resalten sobre cualquier fondo */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0,0,0,0.5) !important;
+}
+
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* El botón de contacto resalta en verde */
+header.header.header-transparent .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* Selector de idioma */
+header.header.header-transparent .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.4) !important;
+    background: rgba(0,0,0,0.3) !important;
+}
+
+/* Ajustar el Hero para que la cabecera no tape el texto */
+.hero {
+    margin-top: -80px !important; /* Sube la foto para que la cabecera flote */
+    padding-top: 160px !important;
+}
+
+/* --- MEJORAR LA LEGIBILIDAD DEL TEXTO EN EL HERO --- */
+
+/* 1. Oscurecer un poco toda la foto para que el texto resalte siempre */
+.hero::before {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.8) 100%) !important;
+}
+
+/* 2. Aplicar sombras muy fuertes al texto principal y al párrafo */
+.hero__title {
+    color: #ffffff !important;
+    /* Sombra sólida + Sombra difuminada */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 8px 25px rgba(0, 0, 0, 0.8) !important;
+}
+
+.hero__text {
+    color: #ffffff !important;
+    font-weight: 500 !important; /* Un poquito más grueso para que aguante mejor el contraste */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 4px 15px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 3. Arreglar la cabecera: letras blancas con sombra */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0,0,0,0.6) !important;
+}
+
+/* --- TEXTO NEGRO CON SOMBRA BLANCA (SIN APAGAR LA FOTO) --- */
+
+/* 1. Quitar el velo oscuro de la foto para que brille con luz propia */
+.hero::before {
+    background: linear-gradient(to right, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0) 50%) !important; /* Solo un pelín a la izquierda para la cabecera */
+}
+
+/* 2. El titular en negro, con una sombra blanca gruesa */
+.hero__title {
+    color: #0f172a !important; /* Azul noche muy oscuro, casi negro */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.9), 
+        0 0 20px rgba(255, 255, 255, 0.7),
+        0 4px 6px rgba(255, 255, 255, 0.8) !important; /* El resplandor blanco */
+}
+
+/* 3. El párrafo en negro, con sombra blanca */
+.hero__text {
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 1), 
+        0 0 15px rgba(255, 255, 255, 0.8),
+        0 2px 4px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 4. La cabecera: mantenemos las letras blancas porque tiene el fondo oscuro */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* =========================================
+   ARREGLO DEFINITIVO DE LA CABECERA EN PÁGINAS INTERNAS
+   ========================================= */
+
+/* 1. Forzar fondo oscuro sólido para las páginas internas */
+body > header.header:not(.header-transparent) {
+    background: #0f172a !important; /* Azul noche sólido */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 2. Forzar que TODAS las letras de la cabecera sean blancas */
+body > header.header:not(.header-transparent) .logo,
+body > header.header:not(.header-transparent) .nav__link,
+body > header.header:not(.header-transparent) .logo span {
+    color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+/* La & en su verde */
+body > header.header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. Botón y selector de idioma visibles */
+body > header.header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+body > header.header:not(.header-transparent) .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+body > header.header:not(.header-transparent) .lang-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+
+body > header.header:not(.header-transparent) {
+    background: #0f172a !important; /* Fondo azul noche oscuro */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+body > header.header:not(.header-transparent) .logo,
+body > header.header:not(.header-transparent) .nav__link {
+    color: #ffffff !important; /* Letras blancas */
+    text-shadow: none !important;
+}
+
+body > header.header:not(.header-transparent) .logo span {
+    color: var(--primary) !important; /* La & verde */
+}
+
+body > header.header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+body > header.header:not(.header-transparent) .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+body > header.header:not(.header-transparent) .lang-select option {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+/* =========================================
+   CABECERA UNIFICADA CON DEGRADADO AZUL (TODAS LAS PÁGINAS)
+   ========================================= */
+
+/* 1. Fondo con degradado azul en TODAS las cabeceras */
+header.header {
+    background: linear-gradient(to bottom, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.02) 60%, rgba(14, 165, 233, 0) 100%) !important;
+    backdrop-filter: blur(8px) !important;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.1) !important;
+    box-shadow: none !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
+    padding: 1.5rem 0 !important;
+}
+
+/* 2. En el INICIO (con foto), las letras son blancas */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+}
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. En las páginas INTERNAS (sin foto), las letras son oscuras para leerse sobre el azul claro */
+body > header.header:not(.header-transparent) .logo,
+body > header.header:not(.header-transparent) .nav__link {
+    color: #0f172a !important; /* Azul noche */
+    text-shadow: none !important;
+}
+body > header.header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. El botón de contacto siempre verde */
+header.header .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* 5. Selector de idioma adaptado a cada fondo */
+header.header.header-transparent .lang-select {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.5) !important;
+    background: rgba(0,0,0,0.2) !important;
+}
+body > header.header:not(.header-transparent) .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* =========================================
+   ESTADO FINAL LIMPIO (PÁGINAS INTERNAS)
+   ========================================= */
+
+/* Cabecera blanca sólida para Servicios, Nosotros y Contacto */
+body > header.header:not(.header-transparent) {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Letras oscuras en páginas internas */
+body > header.header:not(.header-transparent) .logo,
+body > header.header:not(.header-transparent) .nav__link {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+
+body > header.header:not(.header-transparent) .logo span {
+    color: var(--primary) !important;
+}
+
+/* Botón de contacto verde */
+body > header.header:not(.header-transparent) .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* Selector de idioma en modo claro */
+body > header.header:not(.header-transparent) .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* --- REDISEÑO DE LA PÁGINA DE SERVICIOS (ADIOS AL HUECO BLANCO) --- */
+
+/* 1. Fondo con un degradado muy suave para darle profundidad a la página */
+main {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+    padding-top: 120px !important; /* Subimos el contenido */
+    min-height: 100vh;
+}
+
+/* 2. Título más cerca de la cabecera y con más fuerza */
+.section-header {
+    margin-top: 2rem !important;
+    margin-bottom: 3rem !important;
+}
+.section-title {
+    font-size: 3.5rem !important;
+    color: #0f172a !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* 3. Hacer las tarjetas más grandes y que ocupen el espacio */
+.grid {
+    gap: 2.5rem !important; /* Más separación entre ellas */
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.card {
+    padding: 3rem 2.5rem !important;
+    min-height: 280px !important; /* Les damos más altura */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* Centramos el texto verticalmente */
+}
+
+/* 4. Los números gigantes en la esquina, pero más visibles */
+.card__num {
+    font-size: 5rem !important;
+    color: rgba(132, 204, 22, 0.15) !important; /* Verde sutil */
+}
+
+/* 5. Ajustar el texto de las tarjetas */
+.card__title {
+    font-size: 1.8rem !important; /* Título más grande */
+    margin-bottom: 1rem !important;
+    z-index: 2;
+}
+.card__desc {
+    font-size: 1.1rem !important;
+    z-index: 2;
+}
+
+/* --- ELIMINAR EL HUECO GIGANTE EN PÁGINAS INTERNAS --- */
+
+/* 1. Quitar el padding exagerado del main y ajustarlo */
+main[style*="padding-top"] {
+    padding-top: 40px !important; /* Reducido drásticamente */
+}
+
+/* 2. Subir el título y darle su espacio justo */
+.section-header {
+    margin-top: 0 !important;
+    margin-bottom: 3rem !important;
+}
+
+/* 3. Ajustar el fondo para que no se vea tan vacío arriba */
+body {
+    background: #f8fafc !important;
+}
+
+/* =========================================
+   EFECTO CABECERA AL HACER SCROLL (LETRAS OSCURAS CON BRILLO BLANCO)
+   ========================================= */
+
+/* 1. Estado inicial (Arriba del todo sobre la foto): Letras blancas normales */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important; /* Sombra sutil para la foto */
+    transition: all 0.3s ease !important;
+}
+
+/* 2. Estado al hacer SCROLL: Letras oscuras con resplandor blanco */
+header.header.header-transparent.scrolled .logo,
+header.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche muy oscuro */
+    /* Magia: Sombra blanca fuerte para que resalten sobre cualquier fondo */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.9), 
+        0 0 20px rgba(255, 255, 255, 0.7),
+        0 2px 4px rgba(255, 255, 255, 0.8) !important; 
+}
+
+/* 3. La & del logo se queda verde, pero le añadimos un brillo para que no se pierda */
+header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 4. Aseguramos que la cabecera NO tenga fondo al bajar (solo las letras cambian) */
+header.header.header-transparent.scrolled {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+}
+
+/* --- FORZAR EL CAMBIO DE COLOR EN LA CABECERA AL HACER SCROLL --- */
+
+/* 1. Letras oscuras con resplandor blanco al bajar */
+header.header.header-transparent.scrolled .logo,
+header.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 1), 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 2px 5px rgba(255, 255, 255, 0.9) !important; 
+    transition: all 0.3s ease !important;
+}
+
+/* 2. La & del logo también cambia a verde con brillo blanco */
+header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1) !important;
+}
+
+/* 3. El botón de idioma se vuelve oscuro con fondo blanco para leerse */
+header.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: #ffffff !important;
+}
+
+/* --- FORZAR LETRAS OSCURAS CON BRILLO BLANCO AL HACER SCROLL (MÁXIMA PRIORIDAD) --- */
+
+html body header.header.header-transparent.scrolled .logo,
+html body header.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche muy oscuro */
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 1), 
+        0 0 15px rgba(255, 255, 255, 0.8),
+        0 2px 4px rgba(255, 255, 255, 0.9) !important; /* Resplandor blanco */
+    transition: all 0.3s ease !important;
+}
+
+/* La & en verde */
+html body header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1) !important;
+}
+
+/* El selector de idioma también se vuelve legible */
+html body header.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    border-color: #0f172a !important;
+    background: #ffffff !important;
+}
+
+/* Quitar cualquier sombra de caja o fondo blanco extraño de la cabecera al bajar */
+html body header.header.header-transparent.scrolled {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* =========================================
+   TRANSICIÓN EXACTA AL HACER SCROLL
+   ========================================= */
+
+/* 1. Estado inicial (Arriba del todo): Letras Blancas */
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link,
+header.header.header-transparent .logo span {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important; /* Sombra oscura normal */
+    transition: all 0.3s ease !important;
+}
+
+/* 2. Estado al hacer SCROLL: Letras Negras con Sombra Blanca */
+header.header.header-transparent.scrolled .logo,
+header.header.header-transparent.scrolled .nav__link,
+header.header.header-transparent.scrolled .logo span {
+    color: #0f172a !important; /* Negro/Azul noche */
+    /* Resplandor blanco para que resalte sobre el fondo */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 1), 
+        0 0 20px rgba(255, 255, 255, 0.9),
+        0 2px 5px rgba(255, 255, 255, 0.8) !important; 
+}
+
+/* 3. La & del logo se mantiene verde, pero con el resplandor blanco */
+header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. El botón de idioma cambia a fondo blanco al bajar */
+header.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* 5. Asegurarnos de que NO hay fondos feos en la cabecera al bajar */
+header.header.header-transparent.scrolled {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+}
+
+/* =========================================
+   CSS PARA EL NUEVO SCRIPT DE SCROLL
+   ========================================= */
+
+/* 1. Estado inicial (Arriba del todo): Letras Blancas */
+.header.header-transparent .logo,
+.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s ease !important;
+}
+.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* 2. Estado al hacer SCROLL: Letras Negras con Sombra Blanca */
+.header.header-transparent.scrolled .logo,
+.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Negro/Azul noche */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 1), 
+        0 0 20px rgba(255, 255, 255, 0.9),
+        0 2px 5px rgba(255, 255, 255, 0.8) !important; 
+}
+
+.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1) !important;
+}
+
+/* 3. El botón de idioma cambia al bajar */
+.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* =========================================
+   ANULAR EL FONDO BLANCO AL HACER SCROLL (MÁXIMA PRIORIDAD)
+   ========================================= */
+
+/* 1. Forzar que la cabecera al bajar NO tenga fondo y sea transparente */
+html body header.header.header-transparent.scrolled {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+}
+
+/* 2. Forzar que las letras se vuelvan negras con resplandor blanco */
+html body header.header.header-transparent.scrolled .logo,
+html body header.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche muy oscuro */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 1), 
+        0 0 20px rgba(255, 255, 255, 0.9),
+        0 2px 5px rgba(255, 255, 255, 0.8) !important; 
+}
+
+/* La & en verde */
+html body header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1) !important;
+}
+
+/* 3. El botón de idioma al bajar se vuelve blanco para poder leerse */
+html body header.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* =========================================
+   SOLUCIÓN DEFINITIVA: EFECTO SCROLL REVEAL
+   ========================================= */
+
+/* 1. ESTADO ARRIBA (Letras blancas, sin fondo) */
+header.header.header-transparent {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* 2. ESTADO AL BAJAR (Fondo cristal blanco, letras oscuras con brillo) */
+header.header.header-transparent.scrolled {
+    /* Fondo blanco semitransparente para que se lea perfectamente */
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+header.header.header-transparent.scrolled .logo,
+header.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche oscuro */
+    /* Resplandor blanco para que resalte aún más */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 0.8) !important;
+}
+
+header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. Botón de idioma al bajar */
+header.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* 4. Asegurar que el botón de contacto se vea bien siempre */
+header.header.header-transparent .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* =========================================
+   SOLUCIÓN FINAL: CABECERA FIJA Y EFECTO DE COLOR
+   ========================================= */
+
+/* 1. La cabecera se queda SIEMPRE fija arriba */
+header.header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+    transition: all 0.3s ease !important;
+    padding: 1.5rem 0 !important;
+}
+
+/* 2. Estado inicial (Arriba del todo): Fondo transparente, letras blancas */
+header.header.header-transparent {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom: none !important;
+}
+header.header.header-transparent .logo,
+header.header.header-transparent .nav__link {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+header.header.header-transparent .logo span {
+    color: var(--primary) !important;
+}
+
+/* 3. Estado al BAJAR: Fondo cristal blanco, letras oscuras con brillo blanco */
+header.header.header-transparent.scrolled {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+header.header.header-transparent.scrolled .logo,
+header.header.header-transparent.scrolled .nav__link {
+    color: #0f172a !important; /* Azul noche */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 0.8) !important; /* Resplandor blanco */
+}
+header.header.header-transparent.scrolled .logo span {
+    color: var(--primary) !important;
+}
+
+/* 4. Selector de idioma y botón */
+header.header.header-transparent.scrolled .lang-select {
+    color: #0f172a !important;
+    background: transparent !important;
+    border-color: #cbd5e1 !important;
+}
+header.header.header-transparent .btn--primary {
+    background: var(--primary) !important;
+    color: #0f172a !important;
+}
+
+/* 5. Como la cabecera es fija, empujamos el contenido del Hero para que no lo tape */
+.hero {
+    padding-top: 140px !important;
+}
