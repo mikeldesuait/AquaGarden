@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto | Aqua & Garden</title>
+  <title>Contacto | aqua&garden</title>
   <link rel="icon" type="image/png" href="../assets/img/faviconpestana.png">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
@@ -12,7 +12,7 @@
     .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
     
     .contact-info { background: transparent; padding: 0; }
-    .contact-info h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text-main); }
+    .contact-info h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text-main); font-family: var(--font-heading); text-transform: lowercase; }
     .info-item { margin-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; }
     .info-label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; margin-bottom: 0.3rem; }
     .info-item p { color: var(--text-main); font-size: 1.1rem; margin: 0; }
@@ -23,6 +23,9 @@
     .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
     .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font-family: inherit; font-size: 0.95rem; transition: all 0.3s; }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.1); }
+    
+    /* Quitamos el asterisco de obligatorio para que se vea más limpio */
+    .form-group label::after { content: ''; }
     
     .btn-submit { width: 100%; padding: 0.9rem; font-size: 1rem; border-radius: 6px; background: var(--text-main); color: #fff; font-weight: 600; border: none; cursor: pointer; transition: 0.3s; margin-top: 0.5rem; }
     .btn-submit:hover { background: var(--primary); color: var(--text-main); }
@@ -44,27 +47,44 @@
 
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Aqua & Garden</h3>
+        <h3>aqua&garden</h3>
         <div class="info-item"><span class="info-label">Teléfono</span><p>(+34) 622 411 992</p></div>
         <div class="info-item"><span class="info-label">Email</span><p>aquagardenpools@gmail.com</p></div>
         <div class="info-item" style="border-bottom: none;"><span class="info-label">Zona de trabajo</span><p>Torrevieja, Orihuela Costa, Ciudad Quesada, Guardamar y Santa Pola.</p></div>
       </div>
 
       <div class="contact-form-wrapper">
-        <!-- El formulario se envía a sí mismo (onsubmit) pero lo controlamos con JS -->
         <form id="contact-form">
           <div class="form-row">
-            <div class="form-group"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" required placeholder="Tu nombre"></div>
-            <div class="form-group"><label for="telefono">Teléfono</label><input type="tel" id="telefono" name="telefono" required placeholder="Tu teléfono"></div>
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono (opcional)</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Tu teléfono">
+            </div>
           </div>
-          <div class="form-group"><label for="email">Correo Electrónico</label><input type="email" id="email" name="email" required placeholder="tu@email.com"></div>
-          <div class="form-group"><label for="servicio">Servicio de interés</label><select id="servicio" name="servicio"><option value="piscina">Mantenimiento de Piscinas</option><option value="jardin">Jardinería</option><option value="limpieza">Limpieza</option></select></div>
-          <div class="form-group"><label for="mensaje">Mensaje (opcional)</label><textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos..."></textarea></div>
+          
+          <div class="form-group">
+            <label for="servicio">Servicio de interés</label>
+            <select id="servicio" name="servicio">
+              <option value="Mantenimiento de Piscinas">Mantenimiento de Piscinas</option>
+              <option value="Jardinería Integral">Jardinería Integral</option>
+              <option value="Limpieza de Comunidades">Limpieza de Comunidades</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos qué necesitas..."></textarea>
+          </div>
+          
           <button type="submit" class="btn-submit">Abrir Correo y Enviar</button>
         </form>
 
         <div style="text-align: center; margin: 1.5rem 0; color: #cbd5e1; font-size: 0.9rem;">— o —</div>
-        <a href="https://wa.me/34622411992?text=Hola,%20vengo%20desde%20la%20web%20de%20Aqua%20&%20Garden%20y%20me%20gustaría%20solicitar%20información." target="_blank" class="btn-whatsapp">
+        <a href="https://wa.me/34622411992?text=Hola,%20vengo%20desde%20la%20web%20de%20aqua%20&%20garden%20y%20me%20gustaría%20solicitar%20información." target="_blank" class="btn-whatsapp">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           O contáctanos por WhatsApp
         </a>
@@ -81,28 +101,31 @@
         
         // Recogemos los datos
         const nombre = document.getElementById('nombre').value;
-        const telefono = document.getElementById('telefono').value;
-        const email = document.getElementById('email').value;
+        const telefono = document.getElementById('telefono').value || "No especificado";
         const servicio = document.getElementById('servicio').value;
         const mensaje = document.getElementById('mensaje').value;
 
-        // Preparamos el asunto y el cuerpo del correo
-        const asunto = encodeURIComponent("Contacto Web: " + nombre);
+        // Preparamos el asunto del correo
+        const asunto = encodeURIComponent("Solicitud de información: " + servicio);
+        
+        // Preparamos el cuerpo del correo con un formato limpio (saltos de línea dobles para que respire)
         const cuerpo = encodeURIComponent(
+          "Hola equipo de aqua&garden,\n\n" +
+          "Me pongo en contacto con vosotros a través de la web.\n\n" +
+          "--- DATOS DE CONTACTO ---\n" +
           "Nombre: " + nombre + "\n" +
           "Teléfono: " + telefono + "\n" +
-          "Email: " + email + "\n" +
-          "Servicio: " + servicio + "\n\n" +
-          "Mensaje:\n" + mensaje
+          "Servicio de interés: " + servicio + "\n\n" +
+          "--- MENSAJE ---\n" +
+          mensaje + "\n\n" +
+          "Un saludo."
         );
 
         // Abrimos el cliente de correo por defecto del usuario
-        // NOTA: Aquí usamos el correo de Gmail que me indicaste
         const correoDestino = "aquagardenpools@gmail.com";
         window.location.href = `mailto:${correoDestino}?subject=${asunto}&body=${cuerpo}`;
       });
     });
   </script>
-<script src="../assets/js/mobile-menu.js"></script>
 </body>
 </html>
